@@ -3,6 +3,12 @@
   "globals": {
     "__DEV__": false
   },
-  "testPathIgnorePatterns": ["/node_modules/", "__tests__/__mocks__"],
-  "transformIgnorePatterns": ["/node_modules/(?!@tbergq)/"]
+  "testPathIgnorePatterns": [
+    "/node_modules/",
+    "__tests__/__mocks__"
+  ],
+  "transformIgnorePatterns": [
+    "/node_modules/(?!@tbergq)/"
+  ],
+  "setupTestFrameworkScriptFile": "<rootDir>/scripts/setupTests.js"
 }

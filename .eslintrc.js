@@ -17,6 +17,7 @@ module.exports = {
     node: true,
   },
   rules: {
+    'import/no-extraneous-dependencies': OFF,
     "prettier/prettier": [
       ERROR,
       { singleQuote: true, trailingComma: "all", jsxBracketSameLine: false }

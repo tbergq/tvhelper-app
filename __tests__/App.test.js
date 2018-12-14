@@ -8,20 +8,14 @@ import App from '../App';
 it('renders', () => {
   expect(shallow(<App />)).toMatchInlineSnapshot(`
 Object {
-  "output": <Component
-    style={
-      Object {
-        "alignItems": "center",
-        "backgroundColor": "#fff",
-        "flex": 1,
-        "justifyContent": "center",
-      }
-    }
-  >
-    <Component>
-      Open up App.js to start working on your app!
-    </Component>
-  </Component>,
+  "output": <React.Fragment>
+    <StatusBar
+      animated={false}
+      barStyle="light-content"
+      showHideTransition="fade"
+    />
+    <NavigationContainer />
+  </React.Fragment>,
 }
 `);
 });
