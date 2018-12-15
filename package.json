@@ -8,16 +8,20 @@
     "lint": "yarn eslint .",
     "flow": "flow --include-warnings",
     "test-ci": "yarn lint && yarn flow && yarn test",
-    "test": "node node_modules/jest/bin/jest.js --config=.jest.json"
+    "test": "node node_modules/jest/bin/jest.js --config=.jest.json",
+    "relay": "relay-compiler --src ./src --schema ./schema.graphql",
+    "graphql": "yarn babel-node scripts/getSchema.js"
   },
   "dependencies": {
     "expo": "^31.0.2",
     "react": "16.5.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-31.0.0.tar.gz",
-    "react-navigation": "^3.0.8"
+    "react-navigation": "^3.0.8",
+    "@tbergq/tvhelper-relay": "^0"
   },
   "devDependencies": {
     "@babel/core": "^7.2.0",
+    "@babel/node": "^7.2.2",
     "@babel/preset-env": "^7.2.0",
     "@babel/preset-flow": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
@@ -25,6 +29,7 @@
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
+    "babel-plugin-relay": "^1.7.0",
     "babel-preset-expo": "^5.0.0",
     "babel-preset-flow": "^6.23.0",
     "eslint-config-prettier": "^3.3.0",
@@ -39,5 +44,8 @@
   "resolutions": {
     "**/babel-core": "7.0.0-bridge.0"
   },
-  "private": true
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ]
 }

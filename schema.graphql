@@ -1,0 +1,25 @@
+schema {
+  query: RootQuery
+  mutation: RootMutation
+}
+
+type LoginType {
+  token: String
+}
+
+"""Root Mutation."""
+type RootMutation {
+  login(username: String!, password: String!): LoginType
+}
+
+"""Root Query"""
+type RootQuery {
+  """Test"""
+  test: TestType
+}
+
+"""Test"""
+type TestType {
+  id: ID
+  test: String
+}

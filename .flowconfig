@@ -25,6 +25,8 @@ esproposal.nullish_coalescing=enable
 <PROJECT_ROOT>/node_modules/react-native/Libraries/LayoutAnimation/LayoutAnimation.js
 <PROJECT_ROOT>/node_modules/react-native/Libraries/react-native/react-native-implementation.js
 <PROJECT_ROOT>/node_modules/react-native-testing-library/.+
+<PROJECT_ROOT>/node_modules/graphql/.+
+<PROJECT_ROOT>/node_modules/react-relay-network-modern/lib/fetchWithMiddleware.js
 
 [strict]
 ;nonstrict-import
