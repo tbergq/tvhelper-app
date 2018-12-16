@@ -3,8 +3,30 @@ schema {
   mutation: RootMutation
 }
 
+"""
+A date string, such as 2007-12-03, compliant with the `full-date` format
+outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for
+representation of dates and times using the Gregorian calendar.
+"""
+scalar Date
+
 type LoginType {
   token: String
+}
+
+"""Information about pagination in a connection."""
+type PageInfo {
+  """When paginating forwards, are there more items?"""
+  hasNextPage: Boolean!
+
+  """When paginating backwards, are there more items?"""
+  hasPreviousPage: Boolean!
+
+  """When paginating backwards, the cursor to continue."""
+  startCursor: String
+
+  """When paginating forwards, the cursor to continue."""
+  endCursor: String
 }
 
 """Root Mutation."""
@@ -14,6 +36,9 @@ type RootMutation {
 
 """Root Query"""
 type RootQuery {
+  """Search for tv shows by name"""
+  searchTvShow(query: String!, after: String, first: Int, before: String, last: Int): TvShowConnection
+
   """Test"""
   test: TestType
 }
@@ -22,4 +47,37 @@ type RootQuery {
 type TestType {
   id: ID
   test: String
+}
+
+type TvHelperImage {
+  id: ID
+  original: String
+  medium: String
+}
+
+type TvShow {
+  id: ID
+  name: String
+  status: String
+  premiered: Date
+  rating: Float
+  image: TvHelperImage
+}
+
+"""A connection to a list of items."""
+type TvShowConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [TvShowEdge]
+}
+
+"""An edge in a connection."""
+type TvShowEdge {
+  """The item at the end of the edge"""
+  node: TvShow
+
+  """A cursor for use in pagination"""
+  cursor: String!
 }
