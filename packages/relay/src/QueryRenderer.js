@@ -1,7 +1,8 @@
 // @flow
 
 import * as React from 'react';
-import { Text, ActivityIndicator } from 'react-native';
+import { ActivityIndicator } from 'react-native';
+import { Text } from '@tbergq/tvhelper-components';
 import {
   QueryRenderer as OriginalQueryRenderer,
   type GraphQLTaggedNode,

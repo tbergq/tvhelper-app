@@ -1,7 +1,7 @@
 // @flow strict
 
 import * as React from 'react';
-import { Text } from 'react-native';
+import { Text } from '@tbergq/tvhelper-components';
 import { QueryRenderer, graphql } from '@tbergq/tvhelper-relay';
 
 import type { SearchScreenQueryResponse } from './__generated__/SearchScreenQuery.graphql';

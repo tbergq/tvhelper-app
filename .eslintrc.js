@@ -21,6 +21,15 @@ module.exports = {
     "prettier/prettier": [
       ERROR,
       { singleQuote: true, trailingComma: "all", jsxBracketSameLine: false }
-    ]
+    ],
+    "no-restricted-imports": [ERROR, {
+      paths: [
+        {
+          name: "react-native",
+          importNames: ['Text'],
+          message: "Use @tbergq/tvehelper-components instead"
+        }
+      ]
+    }]
   }
 };
