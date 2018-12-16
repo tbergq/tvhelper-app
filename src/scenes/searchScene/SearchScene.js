@@ -4,6 +4,8 @@ import * as React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { TextInput, Button } from '@tbergq/tvhelper-components';
 
+import SearchContainer from './SearchContainer';
+
 type Props = {||};
 
 type State = {|
@@ -32,6 +34,9 @@ export default class SearchScene extends React.Component<Props, State> {
           <View style={styles.item} />
           <Button text="Search" onPress={this.search} />
         </View>
+        {this.state.query !== '' && (
+          <SearchContainer query={this.state.query} />
+        )}
       </View>
     );
   }
@@ -40,7 +45,8 @@ export default class SearchScene extends React.Component<Props, State> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 10,
+    paddingTop: 10,
+    paddingHorizontal: 10,
   },
   row: {
     flexDirection: 'row',

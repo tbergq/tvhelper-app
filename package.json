@@ -9,7 +9,7 @@
     "flow": "flow --include-warnings",
     "test-ci": "yarn lint && yarn flow && yarn test",
     "test": "node node_modules/jest/bin/jest.js --config=.jest.json",
-    "relay": "relay-compiler --src ./src --schema ./schema.graphql",
+    "relay": "yarn relay-compiler --src ./src --schema ./schema.graphql",
     "graphql": "yarn babel-node scripts/getSchema.js"
   },
   "dependencies": {
