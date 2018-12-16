@@ -11,6 +11,7 @@ import type { ConcreteFragment } from 'relay-runtime';
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type TvShowItem$ref: FragmentReference;
 export type TvShowItem = {|
+  +id: ?string,
   +name: ?string,
   +status: ?string,
   +rating: ?number,
@@ -29,6 +30,13 @@ const node/*: ConcreteFragment*/ = {
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "id",
+      "args": null,
+      "storageKey": null
+    },
     {
       "kind": "ScalarField",
       "alias": null,
@@ -71,5 +79,5 @@ const node/*: ConcreteFragment*/ = {
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = '6860c8c9836c4f4c2c6611307f7a7680';
+(node/*: any*/).hash = 'd2272d1987d3bb15d2aeb0a02420b176';
 module.exports = node;

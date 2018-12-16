@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 8d57d890824812365e090e6aec16b8fb
+ * @relayHash 1388c181c26264bbde627ca7f9742a88
  */
 
 /* eslint-disable */
@@ -44,6 +44,7 @@ fragment TvShowList on TvShowConnection {
 }
 
 fragment TvShowItem on TvShow {
+  id
   name
   status
   rating
@@ -83,7 +84,7 @@ return {
   "operationKind": "query",
   "name": "SearchContainerQuery",
   "id": null,
-  "text": "query SearchContainerQuery(\n  $query: String!\n) {\n  searchTvShow(query: $query) {\n    ...TvShowList\n  }\n}\n\nfragment TvShowList on TvShowConnection {\n  edges {\n    node {\n      id\n      ...TvShowItem\n    }\n  }\n}\n\nfragment TvShowItem on TvShow {\n  name\n  status\n  rating\n  image {\n    medium\n    id\n  }\n}\n",
+  "text": "query SearchContainerQuery(\n  $query: String!\n) {\n  searchTvShow(query: $query) {\n    ...TvShowList\n  }\n}\n\nfragment TvShowList on TvShowConnection {\n  edges {\n    node {\n      id\n      ...TvShowItem\n    }\n  }\n}\n\nfragment TvShowItem on TvShow {\n  id\n  name\n  status\n  rating\n  image {\n    medium\n    id\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",

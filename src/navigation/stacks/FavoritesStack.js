@@ -7,7 +7,9 @@ import defaultOptions from './NavigationOptions';
 
 export default createStackNavigator(
   {
-    Favorites: FavoritesScreen,
+    Favorites: {
+      screen: FavoritesScreen,
+    },
   },
   {
     initialRouteName: 'Favorites',

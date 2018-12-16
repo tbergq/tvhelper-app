@@ -6,9 +6,9 @@ import { Text } from '@tbergq/tvhelper-components';
 type Props = {||};
 
 export default class FavoritesScreen extends React.Component<Props> {
-  static navigationOptions = {
+  static navigationOptions = () => ({
     title: 'Favorites',
-  };
+  });
 
   render() {
     return <Text>FavoritesScreen</Text>;

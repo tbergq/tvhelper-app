@@ -15,6 +15,7 @@
   "dependencies": {
     "@tbergq/tvhelper-relay": "^0",
     "@tbergq/tvhelper-components": "^0",
+    "@tbergq/tvhelper-navigation": "^0",
     "expo": "^31.0.2",
     "react": "16.5.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-31.0.0.tar.gz",
@@ -35,7 +36,7 @@
     "babel-preset-flow": "^6.23.0",
     "eslint-config-prettier": "^3.3.0",
     "eslint-plugin-prettier": "^3.0.0",
-    "flow-bin": "^0.89.0",
+    "flow-bin": "^0.78.0",
     "jest": "^23.6.0",
     "prettier": "^1.15.3",
     "react-native-testing-library": "^1.4.2",

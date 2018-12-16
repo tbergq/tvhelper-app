@@ -1,36 +1,49 @@
 // @flow
 
 import * as React from 'react';
-import { Text, Colors } from '@tbergq/tvhelper-components';
+import { Text, Colors, Touchable } from '@tbergq/tvhelper-components';
 import { graphql, createFragmentContainer } from '@tbergq/tvhelper-relay';
 import { Image, View, StyleSheet, Dimensions } from 'react-native';
+import { withNavigation, type NavigationScreenProp } from 'react-navigation';
 
 import type { TvShowItem as TvShow } from './__generated__/TvShowItem.graphql';
 
 type Props = {|
   +data: ?TvShow,
+  +navigation: NavigationScreenProp<{}>,
 |};
 
-const TvShowItem = (props: Props) => {
-  const status = props.data?.status ?? '';
-  const name = props.data?.name ?? '';
-  const rating = props.data?.rating ?? '';
-  return (
-    <View style={styles.container}>
-      <Image
-        source={{ uri: props.data?.image?.medium }}
-        style={StyleSheet.absoluteFill}
-        resizeMode="cover"
-      />
-      <View style={styles.bottomSheet}>
-        <Text style={styles.text}>{`${name} - ${rating}`}</Text>
-        <Text style={[styles.text, styles[status.toLowerCase()]]}>
-          {status}
-        </Text>
-      </View>
-    </View>
-  );
-};
+class TvShowItem extends React.Component<Props> {
+  onPress = () => {
+    this.props.navigation.navigate('TvShow', {
+      id: this.props.data?.id,
+      name: this.props.data?.name,
+    });
+  };
+
+  render() {
+    const status = this.props.data?.status ?? '';
+    const name = this.props.data?.name ?? '';
+    const rating = this.props.data?.rating ?? '';
+    return (
+      <Touchable onPress={this.onPress}>
+        <View style={styles.container}>
+          <Image
+            source={{ uri: this.props.data?.image?.medium }}
+            style={StyleSheet.absoluteFill}
+            resizeMode="cover"
+          />
+          <View style={styles.bottomSheet}>
+            <Text style={styles.text}>{`${name} - ${rating}`}</Text>
+            <Text style={[styles.text, styles[status.toLowerCase()]]}>
+              {status}
+            </Text>
+          </View>
+        </View>
+      </Touchable>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -63,9 +76,10 @@ const styles = StyleSheet.create({
 });
 
 export default (createFragmentContainer(
-  TvShowItem,
+  withNavigation(TvShowItem),
   graphql`
     fragment TvShowItem on TvShow {
+      id
       name
       status
       rating
