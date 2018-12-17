@@ -15,7 +15,10 @@ class TvShowList extends React.Component<Props> {
   render() {
     const data = this.props.data?.edges ?? [];
     return (
-      <ScrollView contentContainerStyle={styles.container}>
+      <ScrollView
+        contentContainerStyle={styles.container}
+        keyboardDismissMode="on-drag"
+      >
         {data.map(tvShow => (
           <TvShowItem data={tvShow?.node} key={tvShow?.node?.id} />
         ))}

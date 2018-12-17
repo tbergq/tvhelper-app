@@ -1,7 +1,7 @@
 // @flow strict
 
 import * as React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Keyboard } from 'react-native';
 import { TextInput, Button } from '@tbergq/tvhelper-components';
 
 import SearchContainer from './SearchContainer';
@@ -20,7 +20,10 @@ export default class SearchScene extends React.Component<Props, State> {
 
   onChange = (input: string) => this.setState({ input });
 
-  search = () => this.setState((state: State) => ({ query: state.input }));
+  search = () => {
+    this.setState((state: State) => ({ query: state.input }));
+    Keyboard.dismiss();
+  };
 
   render() {
     return (
