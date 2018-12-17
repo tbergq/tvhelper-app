@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default (createFragmentContainer(
+export default createFragmentContainer(
   TvShowList,
   graphql`
     fragment TvShowList on TvShowConnection {
@@ -44,4 +44,4 @@ export default (createFragmentContainer(
       }
     }
   `,
-): any); // TODO Fix
+);

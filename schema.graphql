@@ -39,6 +39,9 @@ type RootQuery {
   """Search for tv shows by name"""
   searchTvShow(query: String!, after: String, first: Int, before: String, last: Int): TvShowConnection
 
+  """Tv show lookup by id"""
+  tvShowDetail(id: ID!): TvShow
+
   """Test"""
   test: TestType
 }
@@ -62,6 +65,7 @@ type TvShow {
   premiered: Date
   rating: Float
   image: TvHelperImage
+  summary(stripTags: Boolean = true): String
 }
 
 """A connection to a list of items."""

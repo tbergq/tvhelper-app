@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default (createFragmentContainer(
+export default createFragmentContainer(
   withNavigation(TvShowItem),
   graphql`
     fragment TvShowItem on TvShow {
@@ -88,4 +88,4 @@ export default (createFragmentContainer(
       }
     }
   `,
-): any); // TODO: Fix
+);

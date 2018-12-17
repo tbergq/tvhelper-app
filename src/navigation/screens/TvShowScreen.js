@@ -2,7 +2,8 @@
 
 import * as React from 'react';
 import type { Navigation } from '@tbergq/tvhelper-navigation';
-import { Text } from '@tbergq/tvhelper-components';
+
+import TvShowScene from '../../scenes/tvShow/TvShowScene';
 
 type Props = {|
   +navigation: Navigation<{|
@@ -20,6 +21,10 @@ export default class TvShowScreen extends React.Component<Props> {
   };
 
   render() {
-    return <Text>{JSON.stringify(this.props)}</Text>;
+    const id: string | null = this.props.navigation.getParam('id') ?? null;
+    if (id === null) {
+      return null; // TODO: Add error screen
+    }
+    return <TvShowScene id={id} />;
   }
 }

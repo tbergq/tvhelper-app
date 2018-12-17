@@ -6,4 +6,5 @@ export default {
   gray: '#cccccc',
   success: '#5cb85c',
   danger: '#d9534f',
+  primary: '#337ab7',
 };

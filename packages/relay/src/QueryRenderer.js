@@ -3,15 +3,12 @@
 import * as React from 'react';
 import { ActivityIndicator } from 'react-native';
 import { Text } from '@tbergq/tvhelper-components';
-import {
-  QueryRenderer as OriginalQueryRenderer,
-  type GraphQLTaggedNode,
-} from 'react-relay';
+import { QueryRenderer as OriginalQueryRenderer } from 'react-relay';
 
 import environment from './Environment';
 
 type Props = {|
-  +query: GraphQLTaggedNode,
+  +query: string,
   +render: (props: Object) => React.Element<any>,
   +variables?: Object,
 |};
