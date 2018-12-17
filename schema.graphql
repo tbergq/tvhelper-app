@@ -12,6 +12,7 @@ scalar Date
 
 type LoginType {
   token: String
+  success: Boolean
 }
 
 """Information about pagination in a connection."""
@@ -32,6 +33,7 @@ type PageInfo {
 """Root Mutation."""
 type RootMutation {
   login(username: String!, password: String!): LoginType
+  tvHelperLogin(username: String!, password: String!): LoginType
 }
 
 """Root Query"""
