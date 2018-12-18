@@ -8,7 +8,7 @@ import type { StylePropType } from '../types/StylePropType';
 type Props = {|
   +children: React.Node | React.ChildrenArray<React.Node>,
   +onPress: () => void,
-  +styles?: StylePropType,
+  +style?: StylePropType,
   +accessibilityTraits?: 'button',
   +accessibilityComponentType?: 'button',
   +delayPressIn?: number,

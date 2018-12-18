@@ -3,7 +3,7 @@
 export { withNavigation } from 'react-navigation';
 type NavigationStateParameters = Object;
 
-export type RouteNames = 'TvShow';
+export type RouteNames = 'TvShow' | 'TvFavorite';
 
 export type NavigationListener = (
   key: 'willBlur' | 'willFocus' | 'didFocus' | 'didBlur',

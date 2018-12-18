@@ -38,6 +38,9 @@ type RootMutation {
 
 """Root Query"""
 type RootQuery {
+  """Get your favorites"""
+  favorites(after: String, first: Int, before: String, last: Int): TvShowConnection
+
   """Search for tv shows by name"""
   searchTvShow(query: String!, after: String, first: Int, before: String, last: Int): TvShowConnection
 
