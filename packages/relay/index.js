@@ -17,6 +17,7 @@ type Config = {|
   +optimisticUpdater?: Function,
   +optimisticResponse?: Function,
   +updater?: Function,
+  +configs?: ?$ReadOnlyArray<Object>,
 |};
 export const commitMutation = (config: Config) => {
   return originalCommitMutation(environment, config);

@@ -35,7 +35,7 @@ type RootMutation {
   login(username: String!, password: String!): LoginType
 
   """Toggle tv show from favorite list"""
-  toggeFavorite(serieId: ID!, add: Boolean!): ToggleFavorite
+  toggleFavorite(serieId: ID!, add: Boolean!): ToggleFavorite
   tvHelperLogin(username: String!, password: String!): LoginType
 }
 
@@ -62,7 +62,8 @@ type TestType {
 
 type ToggleFavorite {
   success: Boolean
-  tvShow: TvShow
+  serieId: ID
+  tvShow: TvShowNode
 }
 
 type TvHelperImage {
@@ -98,4 +99,8 @@ type TvShowEdge {
 
   """A cursor for use in pagination"""
   cursor: String!
+}
+
+type TvShowNode {
+  node: TvShow
 }
