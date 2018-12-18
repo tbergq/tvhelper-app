@@ -8,11 +8,17 @@ import TvDetail from './TvDetail';
 
 type Props = {|
   +id: string,
+  +setIsFavorite: (?boolean) => void,
 |};
 
 export default class TvShowScene extends React.Component<Props> {
   renderInner = (props: TvShowSceneQueryResponse) => {
-    return <TvDetail data={props.tvShowDetail} />;
+    return (
+      <TvDetail
+        data={props.tvShowDetail}
+        setIsFavorite={this.props.setIsFavorite}
+      />
+    );
   };
 
   render() {

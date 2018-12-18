@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 97fc4f515287d6443f09c21b180a4338
+ * @relayHash 39b6320a015864a39f49085d81bf5ba5
  */
 
 /* eslint-disable */
@@ -36,6 +36,7 @@ query TvShowSceneQuery(
 }
 
 fragment TvDetail on TvShow {
+  isFavorite
   image {
     original
     id
@@ -77,7 +78,7 @@ return {
   "operationKind": "query",
   "name": "TvShowSceneQuery",
   "id": null,
-  "text": "query TvShowSceneQuery(\n  $id: ID!\n) {\n  tvShowDetail(id: $id) {\n    ...TvDetail\n    id\n  }\n}\n\nfragment TvDetail on TvShow {\n  image {\n    original\n    id\n  }\n  ...Summary\n}\n\nfragment Summary on TvShow {\n  summary\n}\n",
+  "text": "query TvShowSceneQuery(\n  $id: ID!\n) {\n  tvShowDetail(id: $id) {\n    ...TvDetail\n    id\n  }\n}\n\nfragment TvDetail on TvShow {\n  isFavorite\n  image {\n    original\n    id\n  }\n  ...Summary\n}\n\nfragment Summary on TvShow {\n  summary\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -118,6 +119,13 @@ return {
         "concreteType": "TvShow",
         "plural": false,
         "selections": [
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "isFavorite",
+            "args": null,
+            "storageKey": null
+          },
           {
             "kind": "LinkedField",
             "alias": null,

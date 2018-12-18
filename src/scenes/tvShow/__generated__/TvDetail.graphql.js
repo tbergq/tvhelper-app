@@ -12,6 +12,7 @@ type Summary$ref = any;
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type TvDetail$ref: FragmentReference;
 export type TvDetail = {|
+  +isFavorite: ?boolean,
   +image: ?{|
     +original: ?string
   |},
@@ -28,6 +29,13 @@ const node/*: ConcreteFragment*/ = {
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "isFavorite",
+      "args": null,
+      "storageKey": null
+    },
     {
       "kind": "LinkedField",
       "alias": null,
@@ -54,5 +62,5 @@ const node/*: ConcreteFragment*/ = {
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = '5de62a4d74ae13d5cee3b56024d9bca2';
+(node/*: any*/).hash = 'b5c7ff3813be71b3639ada6710ba8a88';
 module.exports = node;

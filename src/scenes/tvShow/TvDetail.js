@@ -9,22 +9,30 @@ import Summary from './Summary';
 
 type Props = {|
   +data: TvDetailType,
+  +setIsFavorite: (?boolean) => void,
 |};
 
-const TvDetail = (props: Props) => {
-  return (
-    <ScrollView>
-      <Image
-        source={{ uri: props.data.image?.original }}
-        style={styles.image}
-        resizeMode="stretch"
-      />
-      <View style={styles.container}>
-        <Summary data={props.data} />
-      </View>
-    </ScrollView>
-  );
-};
+class TvDetail extends React.Component<Props> {
+  componentDidMount() {
+    const isFavorite = this.props.data.isFavorite;
+    this.props.setIsFavorite(isFavorite);
+  }
+
+  render() {
+    return (
+      <ScrollView>
+        <Image
+          source={{ uri: this.props.data.image?.original }}
+          style={styles.image}
+          resizeMode="stretch"
+        />
+        <View style={styles.container}>
+          <Summary data={this.props.data} />
+        </View>
+      </ScrollView>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -41,6 +49,7 @@ export default createFragmentContainer(
   TvDetail,
   graphql`
     fragment TvDetail on TvShow {
+      isFavorite
       image {
         original
       }

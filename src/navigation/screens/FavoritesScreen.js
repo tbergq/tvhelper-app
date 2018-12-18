@@ -8,6 +8,7 @@ import { Touchable, Text, Colors } from '@tbergq/tvhelper-components';
 
 import LoginScene from '../../scenes/login/LoginScene';
 import FavoritesScene from '../../scenes/favorites/FavoritesScene';
+import isLoggedIn from './isLoggedIn';
 
 type Props = {|
   +navigation: Navigation<{|
@@ -42,8 +43,8 @@ export default class FavoritesScreen extends React.Component<Props, State> {
 
   async componentDidMount() {
     this.props.navigation.setParams({ isLoggedIn: false, logout: this.logout });
-    const token = await AsyncStorage.getItem(TOKEN_KEY);
-    if (token != null) {
+    const loggedIn = await isLoggedIn();
+    if (loggedIn) {
       this.setState({ isLoggedIn: true });
       this.props.navigation.setParams({ isLoggedIn: true });
     }

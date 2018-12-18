@@ -13,10 +13,11 @@
     "graphql": "yarn babel-node scripts/getSchema.js"
   },
   "dependencies": {
-    "@tbergq/tvhelper-relay": "^0",
     "@tbergq/tvhelper-components": "^0",
     "@tbergq/tvhelper-navigation": "^0",
+    "@tbergq/tvhelper-relay": "^0",
     "expo": "^31.0.2",
+    "jwt-decode": "^2.2.0",
     "react": "16.5.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-31.0.0.tar.gz",
     "react-navigation": "^3.0.8"
