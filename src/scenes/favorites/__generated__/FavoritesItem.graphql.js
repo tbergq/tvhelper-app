@@ -16,6 +16,8 @@ export type FavoritesItem = {|
   +image: ?{|
     +medium: ?string
   |},
+  +previousEpisode: ?any,
+  +nextEpisode: ?any,
   +$refType: FavoritesItem$ref,
 |};
 */
@@ -59,9 +61,23 @@ const node/*: ConcreteFragment*/ = {
           "storageKey": null
         }
       ]
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "previousEpisode",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "nextEpisode",
+      "args": null,
+      "storageKey": null
     }
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = '9cd8e1e307b83ccd8f75849e0658bb7f';
+(node/*: any*/).hash = '18ac9ef71d653ddbe643cdb39ee246b5';
 module.exports = node;

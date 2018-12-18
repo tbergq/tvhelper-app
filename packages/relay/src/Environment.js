@@ -6,6 +6,7 @@ import {
   urlMiddleware,
   authMiddleware,
   retryMiddleware,
+  loggerMiddleware,
 } from 'react-relay-network-modern';
 import { AsyncStorage } from 'react-native';
 
@@ -24,6 +25,7 @@ const network = new RelayNetworkLayer([
     prefix: '',
   }),
   retryMiddleware({}),
+  loggerMiddleware(),
 ]);
 
 const source = new RecordSource();

@@ -22,6 +22,8 @@ class FavoritesItem extends React.Component<Props> {
   };
 
   render() {
+    const nextEpisode = this.props.data.nextEpisode ?? 'N/A';
+    const previousEpisode = this.props.data.previousEpisode ?? 'N/A';
     return (
       <Touchable onPress={this.onPress} delayPressIn={70}>
         <View style={styles.container}>
@@ -31,7 +33,11 @@ class FavoritesItem extends React.Component<Props> {
               style={styles.image}
             />
           </View>
-          <Text>{this.props.data.name}</Text>
+          <View style={styles.content}>
+            <Text>{this.props.data.name}</Text>
+            <Text>{`Next episode: ${nextEpisode}`}</Text>
+            <Text>{`Previous episode: ${previousEpisode}`}</Text>
+          </View>
         </View>
         <View style={styles.separator} />
       </Touchable>
@@ -57,6 +63,10 @@ const styles = StyleSheet.create({
     marginBottom: 8,
     marginStart: 85,
   },
+  content: {
+    marginStart: 10,
+    alignSelf: 'center',
+  },
 });
 
 export default createFragmentContainer(
@@ -68,6 +78,8 @@ export default createFragmentContainer(
       image {
         medium
       }
+      previousEpisode
+      nextEpisode
     }
   `,
 );

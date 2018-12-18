@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 62ef3c945933d54e159b5410be6a4d0c
+ * @relayHash 31a40a04f3b1ee4699118c7efe1d1216
  */
 
 /* eslint-disable */
@@ -25,6 +25,8 @@ export type ToggleFavoriteMutationResponse = {|
           +original: ?string,
           +medium: ?string,
         |},
+        +previousEpisode: ?any,
+        +nextEpisode: ?any,
       |}
     |},
   |}
@@ -53,6 +55,8 @@ mutation ToggleFavoriteMutation(
           medium
           id
         }
+        previousEpisode
+        nextEpisode
       }
     }
   }
@@ -129,13 +133,27 @@ v7 = {
   "name": "medium",
   "args": null,
   "storageKey": null
+},
+v8 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "previousEpisode",
+  "args": null,
+  "storageKey": null
+},
+v9 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "nextEpisode",
+  "args": null,
+  "storageKey": null
 };
 return {
   "kind": "Request",
   "operationKind": "mutation",
   "name": "ToggleFavoriteMutation",
   "id": null,
-  "text": "mutation ToggleFavoriteMutation(\n  $serieId: ID!\n  $add: Boolean!\n) {\n  toggleFavorite(serieId: $serieId, add: $add) {\n    success\n    serieId\n    tvShow {\n      node {\n        id\n        name\n        image {\n          original\n          medium\n          id\n        }\n      }\n    }\n  }\n}\n",
+  "text": "mutation ToggleFavoriteMutation(\n  $serieId: ID!\n  $add: Boolean!\n) {\n  toggleFavorite(serieId: $serieId, add: $add) {\n    success\n    serieId\n    tvShow {\n      node {\n        id\n        name\n        image {\n          original\n          medium\n          id\n        }\n        previousEpisode\n        nextEpisode\n      }\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -187,7 +205,9 @@ return {
                       v6,
                       v7
                     ]
-                  }
+                  },
+                  v8,
+                  v9
                 ]
               }
             ]
@@ -245,7 +265,9 @@ return {
                       v7,
                       v4
                     ]
-                  }
+                  },
+                  v8,
+                  v9
                 ]
               }
             ]
@@ -257,5 +279,5 @@ return {
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = 'b36452289b6adf27d4e8912e5c357cc7';
+(node/*: any*/).hash = '0a0577fc485bd7ef725a825733ce42e4';
 module.exports = node;

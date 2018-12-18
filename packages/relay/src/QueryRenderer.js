@@ -16,6 +16,7 @@ type Props = {|
 export default class QueryRenderer extends React.Component<Props> {
   renderInner = ({ error, props }: Object) => {
     if (error) {
+      console.warn(error); // eslint-disable-line no-console
       return <Text>Query failed </Text>;
     }
 

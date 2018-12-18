@@ -18,6 +18,8 @@ const mutation = graphql`
             original
             medium
           }
+          previousEpisode
+          nextEpisode
         }
       }
     }

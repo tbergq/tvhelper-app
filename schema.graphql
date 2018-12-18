@@ -10,6 +10,20 @@ representation of dates and times using the Gregorian calendar.
 """
 scalar Date
 
+"""Episodes of the tv show"""
+type Episode {
+  id: ID
+  image: TvHelperImage
+  name: String
+  season: Int
+  number: Int
+
+  """Gives season and episode number on format S01E01"""
+  seasonAndNumber: String
+  airdate: Date
+  summary(stripTags: Boolean = true): String
+}
+
 type LoginType {
   token: String
   success: Boolean
@@ -81,6 +95,9 @@ type TvShow {
   image: TvHelperImage
   summary(stripTags: Boolean = true): String
   isFavorite: Boolean
+  episodes: [Episode]
+  previousEpisode: Date
+  nextEpisode: Date
 }
 
 """A connection to a list of items."""
