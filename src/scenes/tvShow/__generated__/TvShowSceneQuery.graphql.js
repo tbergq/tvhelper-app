@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 39b6320a015864a39f49085d81bf5ba5
+ * @relayHash 990b5756029da30d056ec6cf0f28194c
  */
 
 /* eslint-disable */
@@ -42,10 +42,24 @@ fragment TvDetail on TvShow {
     id
   }
   ...Summary
+  ...EpisodeList
 }
 
 fragment Summary on TvShow {
   summary
+}
+
+fragment EpisodeList on TvShow {
+  episodes {
+    id
+    ...EpisodeItem
+  }
+}
+
+fragment EpisodeItem on Episode {
+  seasonAndNumber
+  name
+  airdate
 }
 */
 
@@ -78,7 +92,7 @@ return {
   "operationKind": "query",
   "name": "TvShowSceneQuery",
   "id": null,
-  "text": "query TvShowSceneQuery(\n  $id: ID!\n) {\n  tvShowDetail(id: $id) {\n    ...TvDetail\n    id\n  }\n}\n\nfragment TvDetail on TvShow {\n  isFavorite\n  image {\n    original\n    id\n  }\n  ...Summary\n}\n\nfragment Summary on TvShow {\n  summary\n}\n",
+  "text": "query TvShowSceneQuery(\n  $id: ID!\n) {\n  tvShowDetail(id: $id) {\n    ...TvDetail\n    id\n  }\n}\n\nfragment TvDetail on TvShow {\n  isFavorite\n  image {\n    original\n    id\n  }\n  ...Summary\n  ...EpisodeList\n}\n\nfragment Summary on TvShow {\n  summary\n}\n\nfragment EpisodeList on TvShow {\n  episodes {\n    id\n    ...EpisodeItem\n  }\n}\n\nfragment EpisodeItem on Episode {\n  seasonAndNumber\n  name\n  airdate\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -151,6 +165,39 @@ return {
             "name": "summary",
             "args": null,
             "storageKey": null
+          },
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "episodes",
+            "storageKey": null,
+            "args": null,
+            "concreteType": "Episode",
+            "plural": true,
+            "selections": [
+              v2,
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "seasonAndNumber",
+                "args": null,
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "name",
+                "args": null,
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "airdate",
+                "args": null,
+                "storageKey": null
+              }
+            ]
           },
           v2
         ]

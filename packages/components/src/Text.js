@@ -8,11 +8,14 @@ import type { StylePropType } from '../types/StylePropType';
 type Props = {|
   +children: ?string,
   +style?: StylePropType,
+  +bold?: boolean,
 |};
 
 export default function Text(props: Props) {
   return (
-    <OriginalText style={[styles.text, props.style]}>
+    <OriginalText
+      style={[styles.text, props.style, props.bold === true && styles.bold]}
+    >
       {props.children}
     </OriginalText>
   );
@@ -21,5 +24,8 @@ export default function Text(props: Props) {
 const styles = StyleSheet.create({
   text: {
     fontSize: 14,
+  },
+  bold: {
+    fontWeight: 'bold',
   },
 });
