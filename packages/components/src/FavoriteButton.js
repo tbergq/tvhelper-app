@@ -2,7 +2,6 @@
 
 import * as React from 'react';
 import { MaterialIcons } from '@expo/vector-icons';
-import { StyleSheet } from 'react-native';
 
 import Touchable from './Touchable';
 import Colors from './Colors';

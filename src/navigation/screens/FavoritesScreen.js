@@ -9,6 +9,7 @@ import { Touchable, Text, Colors } from '@tbergq/tvhelper-components';
 import LoginScene from '../../scenes/login/LoginScene';
 import FavoritesScene from '../../scenes/favorites/FavoritesScene';
 import isLoggedIn from './isLoggedIn';
+import SortPicker from '../../components/sortPicker/SortPicker';
 
 type Props = {|
   +navigation: Navigation<{|
@@ -16,8 +17,12 @@ type Props = {|
     logout: () => Promise<void>,
   |}>,
 |};
+
 type State = {|
   isLoggedIn: boolean,
+  showModal: boolean,
+  direction: 'ASC' | 'DESC',
+  sortBy: 'NAME' | 'NEXT_EPISODE' | 'PREVIOUS_EPISODE' | 'STATUS',
 |};
 
 const noop = () => {};
@@ -26,7 +31,7 @@ export default class FavoritesScreen extends React.Component<Props, State> {
   static navigationOptions = ({ navigation }: Props) => {
     const isLoggedIn = navigation.getParam('isLoggedIn') ?? false;
     const logout = navigation.getParam('logout') ?? noop;
-
+    const toggleModal = navigation.getParam('toggleModal') ?? noop;
     return {
       title: 'Favorites',
       headerRight: isLoggedIn ? (
@@ -34,11 +39,19 @@ export default class FavoritesScreen extends React.Component<Props, State> {
           <Text style={styles.logoutText}>Logout</Text>
         </Touchable>
       ) : null,
+      headerLeft: isLoggedIn && (
+        <Touchable onPress={toggleModal}>
+          <Text style={styles.logoutText}>Sort</Text>
+        </Touchable>
+      ),
     };
   };
 
   state = {
     isLoggedIn: false,
+    showModal: false,
+    direction: 'ASC',
+    sortBy: 'NAME',
   };
 
   async componentDidMount() {
@@ -46,7 +59,10 @@ export default class FavoritesScreen extends React.Component<Props, State> {
     const loggedIn = await isLoggedIn();
     if (loggedIn) {
       this.setState({ isLoggedIn: true });
-      this.props.navigation.setParams({ isLoggedIn: true });
+      this.props.navigation.setParams({
+        isLoggedIn: true,
+        toggleModal: this.toggleModal,
+      });
     }
   }
 
@@ -62,11 +78,37 @@ export default class FavoritesScreen extends React.Component<Props, State> {
     this.props.navigation.setParams({ isLoggedIn: false });
   };
 
+  toggleModal = () => {
+    this.setState(state => ({ showModal: !state.showModal }));
+  };
+
+  setSortOptions = (
+    direction: $PropertyType<State, 'direction'>,
+    sortBy: $PropertyType<State, 'sortBy'>,
+  ) => {
+    this.setState({ direction, sortBy, showModal: false });
+  };
+
   render() {
     if (this.state.isLoggedIn === false) {
       return <LoginScene onLogin={this.onLogin} />;
     }
-    return <FavoritesScene />;
+    const { direction, sortBy } = this.state;
+    return (
+      <>
+        <FavoritesScene
+          options={{
+            sortDirection: direction,
+            sortBy,
+          }}
+        />
+        <SortPicker
+          showModal={this.state.showModal}
+          toggleModal={this.toggleModal}
+          setSortOptions={this.setSortOptions}
+        />
+      </>
+    );
   }
 }
 

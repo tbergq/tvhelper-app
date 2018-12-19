@@ -1,6 +1,6 @@
 // @flow
 
-export { withNavigation } from 'react-navigation';
+export { withNavigation, SafeAreaView } from 'react-navigation';
 type NavigationStateParameters = Object;
 
 export type RouteNames = 'TvShow' | 'TvFavorite';

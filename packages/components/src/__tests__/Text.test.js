@@ -14,6 +14,7 @@ it('renders', () => {
         "fontSize": 14,
       },
       undefined,
+      false,
     ]
   }
 >

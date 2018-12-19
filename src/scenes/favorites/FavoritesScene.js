@@ -6,7 +6,12 @@ import { QueryRenderer, graphql } from '@tbergq/tvhelper-relay';
 import type { FavoritesSceneQueryResponse } from './__generated__/FavoritesSceneQuery.graphql';
 import FavoritesList from './FavoritesList';
 
-type Props = {||};
+type Props = {|
+  +options: {|
+    +sortDirection: 'ASC' | 'DESC',
+    +sortBy: 'NAME' | 'NEXT_EPISODE' | 'PREVIOUS_EPISODE' | 'STATUS',
+  |},
+|};
 
 export default class FavoritesScene extends React.Component<Props> {
   renderInner = (props: FavoritesSceneQueryResponse) => {
@@ -17,8 +22,8 @@ export default class FavoritesScene extends React.Component<Props> {
     return (
       <QueryRenderer
         query={graphql`
-          query FavoritesSceneQuery($first: Int) {
-            favorites(first: $first)
+          query FavoritesSceneQuery($first: Int, $options: SortOptions) {
+            favorites(first: $first, options: $options)
               @connection(key: "FavoritesScene_favorites") {
               edges {
                 ...FavoritesList
@@ -27,7 +32,9 @@ export default class FavoritesScene extends React.Component<Props> {
           }
         `}
         render={this.renderInner}
-        variables={{}}
+        variables={{
+          options: this.props.options,
+        }}
       />
     );
   }

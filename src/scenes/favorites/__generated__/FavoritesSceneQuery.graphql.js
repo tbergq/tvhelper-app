@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 74ba644b35626a37c97958b3121c4e4f
+ * @relayHash 234088751de5044f6cb96b8bbb186b11
  */
 
 /* eslint-disable */
@@ -10,8 +10,15 @@
 /*::
 import type { ConcreteRequest } from 'relay-runtime';
 type FavoritesList$ref = any;
+export type SortBy = "NAME" | "NEXT_EPISODE" | "PREVIOUS_EPISODE" | "STATUS" | "%future added value";
+export type SortDirection = "ASC" | "DESC" | "%future added value";
+export type SortOptions = {
+  sortDirection?: ?SortDirection,
+  sortBy?: ?SortBy,
+};
 export type FavoritesSceneQueryVariables = {|
-  first?: ?number
+  first?: ?number,
+  options?: ?SortOptions,
 |};
 export type FavoritesSceneQueryResponse = {|
   +favorites: ?{|
@@ -30,8 +37,9 @@ export type FavoritesSceneQuery = {|
 /*
 query FavoritesSceneQuery(
   $first: Int
+  $options: SortOptions
 ) {
-  favorites(first: $first) {
+  favorites(first: $first, options: $options) {
     edges {
       ...FavoritesList
       cursor
@@ -74,23 +82,35 @@ var v0 = [
     "name": "first",
     "type": "Int",
     "defaultValue": null
+  },
+  {
+    "kind": "LocalArgument",
+    "name": "options",
+    "type": "SortOptions",
+    "defaultValue": null
   }
 ],
 v1 = {
+  "kind": "Variable",
+  "name": "options",
+  "variableName": "options",
+  "type": "SortOptions"
+},
+v2 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "cursor",
   "args": null,
   "storageKey": null
 },
-v2 = {
+v3 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "__typename",
   "args": null,
   "storageKey": null
 },
-v3 = {
+v4 = {
   "kind": "LinkedField",
   "alias": null,
   "name": "pageInfo",
@@ -115,15 +135,16 @@ v3 = {
     }
   ]
 },
-v4 = [
+v5 = [
   {
     "kind": "Variable",
     "name": "first",
     "variableName": "first",
     "type": "Int"
-  }
+  },
+  v1
 ],
-v5 = {
+v6 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "id",
@@ -135,7 +156,7 @@ return {
   "operationKind": "query",
   "name": "FavoritesSceneQuery",
   "id": null,
-  "text": "query FavoritesSceneQuery(\n  $first: Int\n) {\n  favorites(first: $first) {\n    edges {\n      ...FavoritesList\n      cursor\n      node {\n        __typename\n        id\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment FavoritesList on TvShowEdge {\n  node {\n    id\n    ...FavoritesItem\n  }\n}\n\nfragment FavoritesItem on TvShow {\n  id\n  name\n  image {\n    medium\n    id\n  }\n  previousEpisode\n  nextEpisode\n  status\n}\n",
+  "text": "query FavoritesSceneQuery(\n  $first: Int\n  $options: SortOptions\n) {\n  favorites(first: $first, options: $options) {\n    edges {\n      ...FavoritesList\n      cursor\n      node {\n        __typename\n        id\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment FavoritesList on TvShowEdge {\n  node {\n    id\n    ...FavoritesItem\n  }\n}\n\nfragment FavoritesItem on TvShow {\n  id\n  name\n  image {\n    medium\n    id\n  }\n  previousEpisode\n  nextEpisode\n  status\n}\n",
   "metadata": {
     "connection": [
       {
@@ -160,7 +181,9 @@ return {
         "alias": "favorites",
         "name": "__FavoritesScene_favorites_connection",
         "storageKey": null,
-        "args": null,
+        "args": [
+          v1
+        ],
         "concreteType": "TvShowConnection",
         "plural": false,
         "selections": [
@@ -178,7 +201,7 @@ return {
                 "name": "FavoritesList",
                 "args": null
               },
-              v1,
+              v2,
               {
                 "kind": "LinkedField",
                 "alias": null,
@@ -188,12 +211,12 @@ return {
                 "concreteType": "TvShow",
                 "plural": false,
                 "selections": [
-                  v2
+                  v3
                 ]
               }
             ]
           },
-          v3
+          v4
         ]
       }
     ]
@@ -208,7 +231,7 @@ return {
         "alias": null,
         "name": "favorites",
         "storageKey": null,
-        "args": v4,
+        "args": v5,
         "concreteType": "TvShowConnection",
         "plural": false,
         "selections": [
@@ -230,7 +253,7 @@ return {
                 "concreteType": "TvShow",
                 "plural": false,
                 "selections": [
-                  v5,
+                  v6,
                   {
                     "kind": "ScalarField",
                     "alias": null,
@@ -254,7 +277,7 @@ return {
                         "args": null,
                         "storageKey": null
                       },
-                      v5
+                      v6
                     ]
                   },
                   {
@@ -278,28 +301,30 @@ return {
                     "args": null,
                     "storageKey": null
                   },
-                  v2
+                  v3
                 ]
               },
-              v1
+              v2
             ]
           },
-          v3
+          v4
         ]
       },
       {
         "kind": "LinkedHandle",
         "alias": null,
         "name": "favorites",
-        "args": v4,
+        "args": v5,
         "handle": "connection",
         "key": "FavoritesScene_favorites",
-        "filters": null
+        "filters": [
+          "options"
+        ]
       }
     ]
   }
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = '1bc806b77893f33a792a2cd90788ae50';
+(node/*: any*/).hash = 'c14af7498306423035aa145fe2381f86';
 module.exports = node;

@@ -7,3 +7,4 @@ export { default as Colors } from './src/Colors';
 export { default as Touchable } from './src/Touchable';
 export { default as ReadMore } from './src/ReadMore';
 export { default as FavoriteButton } from './src/FavoriteButton';
+export { default as Modal } from './src/modal/Modal';

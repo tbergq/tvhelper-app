@@ -17,7 +17,7 @@ const EpisodeItem = (props: Props) => {
     <View style={styles.row}>
       <Text>{props.data.seasonAndNumber}</Text>
       <Text>{props.data.name}</Text>
-      <Text>{props.data.airdate}</Text>
+      <Text>{airdate}</Text>
     </View>
   );
 };

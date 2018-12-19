@@ -40,6 +40,7 @@ it('renders', () => {
             "color": "#ffffff",
           },
         ],
+        false,
       ]
     }
   >
