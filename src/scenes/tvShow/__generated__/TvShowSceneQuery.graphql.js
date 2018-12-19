@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 990b5756029da30d056ec6cf0f28194c
+ * @relayHash 0ce91d2a8251024aa40cb44fd7bffdf8
  */
 
 /* eslint-disable */
@@ -43,6 +43,7 @@ fragment TvDetail on TvShow {
   }
   ...Summary
   ...EpisodeList
+  ...Cast
 }
 
 fragment Summary on TvShow {
@@ -53,6 +54,32 @@ fragment EpisodeList on TvShow {
   episodes {
     id
     ...EpisodeItem
+  }
+}
+
+fragment Cast on TvShow {
+  cast {
+    id
+    ...CastItem
+  }
+}
+
+fragment CastItem on Cast {
+  person {
+    name
+    image {
+      medium
+      id
+    }
+    id
+  }
+  character {
+    name
+    image {
+      medium
+      id
+    }
+    id
   }
 }
 
@@ -86,13 +113,43 @@ v2 = {
   "name": "id",
   "args": null,
   "storageKey": null
-};
+},
+v3 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "name",
+  "args": null,
+  "storageKey": null
+},
+v4 = [
+  v3,
+  {
+    "kind": "LinkedField",
+    "alias": null,
+    "name": "image",
+    "storageKey": null,
+    "args": null,
+    "concreteType": "TvHelperImage",
+    "plural": false,
+    "selections": [
+      {
+        "kind": "ScalarField",
+        "alias": null,
+        "name": "medium",
+        "args": null,
+        "storageKey": null
+      },
+      v2
+    ]
+  },
+  v2
+];
 return {
   "kind": "Request",
   "operationKind": "query",
   "name": "TvShowSceneQuery",
   "id": null,
-  "text": "query TvShowSceneQuery(\n  $id: ID!\n) {\n  tvShowDetail(id: $id) {\n    ...TvDetail\n    id\n  }\n}\n\nfragment TvDetail on TvShow {\n  isFavorite\n  image {\n    original\n    id\n  }\n  ...Summary\n  ...EpisodeList\n}\n\nfragment Summary on TvShow {\n  summary\n}\n\nfragment EpisodeList on TvShow {\n  episodes {\n    id\n    ...EpisodeItem\n  }\n}\n\nfragment EpisodeItem on Episode {\n  seasonAndNumber\n  name\n  airdate\n}\n",
+  "text": "query TvShowSceneQuery(\n  $id: ID!\n) {\n  tvShowDetail(id: $id) {\n    ...TvDetail\n    id\n  }\n}\n\nfragment TvDetail on TvShow {\n  isFavorite\n  image {\n    original\n    id\n  }\n  ...Summary\n  ...EpisodeList\n  ...Cast\n}\n\nfragment Summary on TvShow {\n  summary\n}\n\nfragment EpisodeList on TvShow {\n  episodes {\n    id\n    ...EpisodeItem\n  }\n}\n\nfragment Cast on TvShow {\n  cast {\n    id\n    ...CastItem\n  }\n}\n\nfragment CastItem on Cast {\n  person {\n    name\n    image {\n      medium\n      id\n    }\n    id\n  }\n  character {\n    name\n    image {\n      medium\n      id\n    }\n    id\n  }\n}\n\nfragment EpisodeItem on Episode {\n  seasonAndNumber\n  name\n  airdate\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -183,19 +240,45 @@ return {
                 "args": null,
                 "storageKey": null
               },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "name",
-                "args": null,
-                "storageKey": null
-              },
+              v3,
               {
                 "kind": "ScalarField",
                 "alias": null,
                 "name": "airdate",
                 "args": null,
                 "storageKey": null
+              }
+            ]
+          },
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "cast",
+            "storageKey": null,
+            "args": null,
+            "concreteType": "Cast",
+            "plural": true,
+            "selections": [
+              v2,
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "name": "person",
+                "storageKey": null,
+                "args": null,
+                "concreteType": "Person",
+                "plural": false,
+                "selections": v4
+              },
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "name": "character",
+                "storageKey": null,
+                "args": null,
+                "concreteType": "Person",
+                "plural": false,
+                "selections": v4
               }
             ]
           },

@@ -3,6 +3,12 @@ schema {
   mutation: RootMutation
 }
 
+type Cast {
+  id: ID
+  person: Person
+  character: Person
+}
+
 """
 A date string, such as 2007-12-03, compliant with the `full-date` format
 outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for
@@ -42,6 +48,12 @@ type PageInfo {
 
   """When paginating forwards, the cursor to continue."""
   endCursor: String
+}
+
+type Person {
+  id: ID
+  name: String
+  image: TvHelperImage
 }
 
 """Root Mutation."""
@@ -115,6 +127,7 @@ type TvShow {
   episodes: [Episode]
   previousEpisode: Date
   nextEpisode: Date
+  cast: [Cast]
 }
 
 """A connection to a list of items."""

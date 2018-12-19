@@ -7,6 +7,7 @@ import { ScrollView, View, StyleSheet, Image } from 'react-native';
 import type { TvDetail as TvDetailType } from './__generated__/TvDetail.graphql';
 import Summary from './Summary';
 import EpisodeList from './EpisodeList';
+import Cast from './Cast';
 
 type Props = {|
   +data: TvDetailType,
@@ -29,6 +30,9 @@ class TvDetail extends React.Component<Props> {
         />
         <View style={styles.container}>
           <Summary data={this.props.data} />
+          <View style={styles.episodeContainer}>
+            <Cast data={this.props.data} />
+          </View>
           <View style={styles.episodeContainer}>
             <EpisodeList data={this.props.data} />
           </View>
@@ -62,6 +66,7 @@ export default createFragmentContainer(
       }
       ...Summary
       ...EpisodeList
+      ...Cast
     }
   `,
 );

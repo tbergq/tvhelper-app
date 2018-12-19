@@ -8,6 +8,7 @@
 
 /*::
 import type { ConcreteFragment } from 'relay-runtime';
+type Cast$ref = any;
 type EpisodeList$ref = any;
 type Summary$ref = any;
 import type { FragmentReference } from "relay-runtime";
@@ -17,7 +18,7 @@ export type TvDetail = {|
   +image: ?{|
     +original: ?string
   |},
-  +$fragmentRefs: Summary$ref & EpisodeList$ref,
+  +$fragmentRefs: Summary$ref & EpisodeList$ref & Cast$ref,
   +$refType: TvDetail$ref,
 |};
 */
@@ -64,9 +65,14 @@ const node/*: ConcreteFragment*/ = {
       "kind": "FragmentSpread",
       "name": "EpisodeList",
       "args": null
+    },
+    {
+      "kind": "FragmentSpread",
+      "name": "Cast",
+      "args": null
     }
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = '0a411cfdb459924c9430f50e66991f0c';
+(node/*: any*/).hash = '3cf286c38c10ab69a072cedfaaaeb91a';
 module.exports = node;
