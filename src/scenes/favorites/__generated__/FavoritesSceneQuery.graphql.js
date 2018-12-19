@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash a71dfb4bfe10fb06040883936e3bef13
+ * @relayHash 74ba644b35626a37c97958b3121c4e4f
  */
 
 /* eslint-disable */
@@ -63,6 +63,7 @@ fragment FavoritesItem on TvShow {
   }
   previousEpisode
   nextEpisode
+  status
 }
 */
 
@@ -134,7 +135,7 @@ return {
   "operationKind": "query",
   "name": "FavoritesSceneQuery",
   "id": null,
-  "text": "query FavoritesSceneQuery(\n  $first: Int\n) {\n  favorites(first: $first) {\n    edges {\n      ...FavoritesList\n      cursor\n      node {\n        __typename\n        id\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment FavoritesList on TvShowEdge {\n  node {\n    id\n    ...FavoritesItem\n  }\n}\n\nfragment FavoritesItem on TvShow {\n  id\n  name\n  image {\n    medium\n    id\n  }\n  previousEpisode\n  nextEpisode\n}\n",
+  "text": "query FavoritesSceneQuery(\n  $first: Int\n) {\n  favorites(first: $first) {\n    edges {\n      ...FavoritesList\n      cursor\n      node {\n        __typename\n        id\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment FavoritesList on TvShowEdge {\n  node {\n    id\n    ...FavoritesItem\n  }\n}\n\nfragment FavoritesItem on TvShow {\n  id\n  name\n  image {\n    medium\n    id\n  }\n  previousEpisode\n  nextEpisode\n  status\n}\n",
   "metadata": {
     "connection": [
       {
@@ -267,6 +268,13 @@ return {
                     "kind": "ScalarField",
                     "alias": null,
                     "name": "nextEpisode",
+                    "args": null,
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "status",
                     "args": null,
                     "storageKey": null
                   },

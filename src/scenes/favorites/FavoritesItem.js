@@ -24,6 +24,8 @@ class FavoritesItem extends React.Component<Props> {
   render() {
     const nextEpisode = this.props.data.nextEpisode ?? 'N/A';
     const previousEpisode = this.props.data.previousEpisode ?? 'N/A';
+    const name = this.props.data.name ?? '';
+    const status = this.props.data.status ?? '';
     return (
       <Touchable onPress={this.onPress} delayPressIn={70}>
         <View style={styles.container}>
@@ -34,7 +36,7 @@ class FavoritesItem extends React.Component<Props> {
             />
           </View>
           <View style={styles.content}>
-            <Text>{this.props.data.name}</Text>
+            <Text>{`${name} - ${status}`}</Text>
             <Text>{`Next episode: ${nextEpisode}`}</Text>
             <Text>{`Previous episode: ${previousEpisode}`}</Text>
           </View>
@@ -80,6 +82,7 @@ export default createFragmentContainer(
       }
       previousEpisode
       nextEpisode
+      status
     }
   `,
 );
