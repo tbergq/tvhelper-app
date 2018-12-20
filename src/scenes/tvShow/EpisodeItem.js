@@ -14,7 +14,7 @@ type Props = {|
 const EpisodeItem = (props: Props) => {
   const airdate = props.data.airdate ?? 'Unknown';
   return (
-    <View style={styles.row}>
+    <View style={[styles.row, props.data.watched && styles.watched]}>
       <Text>{props.data.seasonAndNumber}</Text>
       <Text>{props.data.name}</Text>
       <Text>{airdate}</Text>
@@ -31,6 +31,9 @@ const styles = StyleSheet.create({
     padding: 10,
     marginBottom: -1,
   },
+  watched: {
+    backgroundColor: Colors.success,
+  },
 });
 
 export default createFragmentContainer(
@@ -40,6 +43,7 @@ export default createFragmentContainer(
       seasonAndNumber
       name
       airdate
+      watched
     }
   `,
 );

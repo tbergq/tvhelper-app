@@ -14,6 +14,7 @@ export type EpisodeItem = {|
   +seasonAndNumber: ?string,
   +name: ?string,
   +airdate: ?any,
+  +watched: ?boolean,
   +$refType: EpisodeItem$ref,
 |};
 */
@@ -46,9 +47,16 @@ const node/*: ConcreteFragment*/ = {
       "name": "airdate",
       "args": null,
       "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "watched",
+      "args": null,
+      "storageKey": null
     }
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = 'fa1d9156d41033293252852c5090b6e5';
+(node/*: any*/).hash = '905658f4dacb9010682cf765ba424953';
 module.exports = node;
