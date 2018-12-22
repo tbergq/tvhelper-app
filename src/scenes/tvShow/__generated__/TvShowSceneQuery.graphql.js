@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash a00bdd2f3477de32651f83b4501259c7
+ * @relayHash 8c5d619adabcb329b0403ca6735a9953
  */
 
 /* eslint-disable */
@@ -84,6 +84,7 @@ fragment CastItem on Cast {
 }
 
 fragment EpisodeItem on Episode {
+  id
   seasonAndNumber
   name
   airdate
@@ -150,7 +151,7 @@ return {
   "operationKind": "query",
   "name": "TvShowSceneQuery",
   "id": null,
-  "text": "query TvShowSceneQuery(\n  $id: ID!\n) {\n  tvShowDetail(id: $id) {\n    ...TvDetail\n    id\n  }\n}\n\nfragment TvDetail on TvShow {\n  isFavorite\n  image {\n    original\n    id\n  }\n  ...Summary\n  ...EpisodeList\n  ...Cast\n}\n\nfragment Summary on TvShow {\n  summary\n}\n\nfragment EpisodeList on TvShow {\n  episodes {\n    id\n    ...EpisodeItem\n  }\n}\n\nfragment Cast on TvShow {\n  cast {\n    id\n    ...CastItem\n  }\n}\n\nfragment CastItem on Cast {\n  person {\n    name\n    image {\n      medium\n      id\n    }\n    id\n  }\n  character {\n    name\n    image {\n      medium\n      id\n    }\n    id\n  }\n}\n\nfragment EpisodeItem on Episode {\n  seasonAndNumber\n  name\n  airdate\n  watched\n}\n",
+  "text": "query TvShowSceneQuery(\n  $id: ID!\n) {\n  tvShowDetail(id: $id) {\n    ...TvDetail\n    id\n  }\n}\n\nfragment TvDetail on TvShow {\n  isFavorite\n  image {\n    original\n    id\n  }\n  ...Summary\n  ...EpisodeList\n  ...Cast\n}\n\nfragment Summary on TvShow {\n  summary\n}\n\nfragment EpisodeList on TvShow {\n  episodes {\n    id\n    ...EpisodeItem\n  }\n}\n\nfragment Cast on TvShow {\n  cast {\n    id\n    ...CastItem\n  }\n}\n\nfragment CastItem on Cast {\n  person {\n    name\n    image {\n      medium\n      id\n    }\n    id\n  }\n  character {\n    name\n    image {\n      medium\n      id\n    }\n    id\n  }\n}\n\nfragment EpisodeItem on Episode {\n  id\n  seasonAndNumber\n  name\n  airdate\n  watched\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",

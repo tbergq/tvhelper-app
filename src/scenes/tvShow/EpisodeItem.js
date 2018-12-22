@@ -2,25 +2,38 @@
 
 import * as React from 'react';
 import { graphql, createFragmentContainer } from '@tbergq/tvhelper-relay';
-import { Text, Colors } from '@tbergq/tvhelper-components';
+import { Text, Colors, Touchable } from '@tbergq/tvhelper-components';
 import { View, StyleSheet } from 'react-native';
+import { withNavigation, type Navigation } from '@tbergq/tvhelper-navigation';
 
 import type { EpisodeItem as EpisodeItemType } from './__generated__/EpisodeItem.graphql';
 
 type Props = {|
   +data: EpisodeItemType,
+  +navigation: Navigation<{}>,
 |};
 
-const EpisodeItem = (props: Props) => {
-  const airdate = props.data.airdate ?? 'Unknown';
-  return (
-    <View style={[styles.row, props.data.watched && styles.watched]}>
-      <Text>{props.data.seasonAndNumber}</Text>
-      <Text>{props.data.name}</Text>
-      <Text>{airdate}</Text>
-    </View>
-  );
-};
+class EpisodeItem extends React.Component<Props> {
+  onPress = () => {
+    this.props.navigation.navigate('Episode', {
+      id: this.props.data.id,
+      seasonAndNumber: this.props.data.seasonAndNumber,
+    });
+  };
+
+  render() {
+    const airdate = this.props.data.airdate ?? 'Unknown';
+    return (
+      <Touchable onPress={this.onPress} delayPressIn={70}>
+        <View style={[styles.row, this.props.data.watched && styles.watched]}>
+          <Text>{this.props.data.seasonAndNumber}</Text>
+          <Text>{this.props.data.name}</Text>
+          <Text>{airdate}</Text>
+        </View>
+      </Touchable>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   row: {
@@ -37,9 +50,10 @@ const styles = StyleSheet.create({
 });
 
 export default createFragmentContainer(
-  EpisodeItem,
+  withNavigation(EpisodeItem),
   graphql`
     fragment EpisodeItem on Episode {
+      id
       seasonAndNumber
       name
       airdate
