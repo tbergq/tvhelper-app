@@ -7,6 +7,7 @@ import {
   authMiddleware,
   retryMiddleware,
   loggerMiddleware,
+  cacheMiddleware,
 } from 'react-relay-network-modern';
 import { AsyncStorage } from 'react-native';
 
@@ -26,6 +27,10 @@ const network = new RelayNetworkLayer([
   }),
   retryMiddleware({}),
   loggerMiddleware(),
+  cacheMiddleware({
+    size: 500,
+    ttl: 15 * 60 * 1000, // 15 minutes
+  }),
 ]);
 
 const source = new RecordSource();
