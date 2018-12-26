@@ -75,6 +75,9 @@ type RootMutation {
 
 """Root Query"""
 type RootQuery {
+  """Load episode by id"""
+  episode(id: ID!): Episode
+
   """Get your favorites"""
   favorites(after: String, first: Int, before: String, last: Int, options: SortOptions = {sortDirection: ASC, sortBy: NAME}): TvShowConnection
 

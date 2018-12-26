@@ -6,12 +6,13 @@ import { TouchableOpacity, StyleSheet } from 'react-native';
 
 import type { StylePropType } from '../types/StylePropType';
 import Text from './Text';
+import Colors from './Colors';
 
 type Props = {|
   +onPress: () => void,
   +text: string,
   +type?: 'primary' | 'danger',
-  +styles?: StylePropType,
+  +style?: StylePropType,
   +accessibilityTraits?: 'button',
   +accessibilityComponentType?: 'button',
 |};
@@ -21,7 +22,7 @@ export default function Button(props: Props) {
     <TouchableOpacity
       activeOpacity={0.5}
       onPress={props.onPress}
-      style={[styles.button, styles[props.type], props.styles]}
+      style={[styles.button, styles[props.type], props.style]}
     >
       <Text style={[buttonTextStyles.text, buttonTextStyles[props.type]]}>
         {props.text}
@@ -42,7 +43,10 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   primary: {
-    backgroundColor: '#337ab7',
+    backgroundColor: Colors.primary,
+  },
+  danger: {
+    backgroundColor: Colors.danger,
   },
 });
 
@@ -51,6 +55,9 @@ const buttonTextStyles = StyleSheet.create({
     alignSelf: 'center',
   },
   primary: {
-    color: '#ffffff',
+    color: Colors.white,
+  },
+  danger: {
+    color: Colors.white,
   },
 });

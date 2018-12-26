@@ -2,7 +2,8 @@
 
 import * as React from 'react';
 import { type Navigation } from '@tbergq/tvhelper-navigation';
-import { Text } from '@tbergq/tvhelper-components';
+
+import EpisodeScene from '../../scenes/episode/EpisodeScene';
 
 type Props = {|
   +navigation: Navigation<{|
@@ -17,6 +18,6 @@ export default class EpisodeScreen extends React.Component<Props> {
   });
 
   render() {
-    return <Text>{this.props.navigation.state.params.id}</Text>;
+    return <EpisodeScene id={this.props.navigation.state.params.id} />;
   }
 }
