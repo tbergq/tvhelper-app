@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 7564eacd44b35202255abb5ad4613bc8
+ * @relayHash fa27d5ca3525be1d423b545a64c81839
  */
 
 /* eslint-disable */
@@ -37,6 +37,7 @@ query EpisodeSceneQuery(
 
 fragment Episode on Episode {
   name
+  summary
   image {
     ...TvHelperImage
     id
@@ -84,7 +85,7 @@ return {
   "operationKind": "query",
   "name": "EpisodeSceneQuery",
   "id": null,
-  "text": "query EpisodeSceneQuery(\n  $id: ID!\n) {\n  episode(id: $id) {\n    ...Episode\n    id\n  }\n}\n\nfragment Episode on Episode {\n  name\n  image {\n    ...TvHelperImage\n    id\n  }\n  ...ToggleWatched\n}\n\nfragment TvHelperImage on TvHelperImage {\n  medium\n  original\n}\n\nfragment ToggleWatched on Episode {\n  id\n  watched\n}\n",
+  "text": "query EpisodeSceneQuery(\n  $id: ID!\n) {\n  episode(id: $id) {\n    ...Episode\n    id\n  }\n}\n\nfragment Episode on Episode {\n  name\n  summary\n  image {\n    ...TvHelperImage\n    id\n  }\n  ...ToggleWatched\n}\n\nfragment TvHelperImage on TvHelperImage {\n  medium\n  original\n}\n\nfragment ToggleWatched on Episode {\n  id\n  watched\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -129,6 +130,13 @@ return {
             "kind": "ScalarField",
             "alias": null,
             "name": "name",
+            "args": null,
+            "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "summary",
             "args": null,
             "storageKey": null
           },

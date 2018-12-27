@@ -20,7 +20,7 @@ const Episode = (props: Props) => (
       {props.data.name}
     </Text>
     <View style={styles.content}>
-      <Text>TODO: content</Text>
+      <Text>{props.data.summary}</Text>
     </View>
     <View style={styles.toggleContainer}>
       <ToggleWatched data={props.data} />
@@ -57,6 +57,7 @@ export default createFragmentContainer(
   graphql`
     fragment Episode on Episode {
       name
+      summary
       image {
         ...TvHelperImage
       }
