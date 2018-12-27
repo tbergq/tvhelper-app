@@ -15,7 +15,12 @@ type Props = {|
 
 export default class FavoritesScene extends React.Component<Props> {
   renderInner = (props: FavoritesSceneQueryResponse) => {
-    return <FavoritesList data={props.favorites?.edges} />;
+    return (
+      <FavoritesList
+        data={props.favorites?.edges}
+        options={this.props.options}
+      />
+    );
   };
 
   render() {
