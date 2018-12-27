@@ -4,16 +4,14 @@ import { createStackNavigator } from 'react-navigation';
 
 import SearchScreen from '../screens/SearchScreen';
 import defaultOptions from './NavigationOptions';
-import TvShowScreen from '../screens/TvShowScreen';
+import SharedScreens from './SharedScreens';
 
 export default createStackNavigator(
   {
     Search: {
       screen: SearchScreen,
     },
-    TvShow: {
-      screen: TvShowScreen,
-    },
+    ...SharedScreens,
   },
   {
     initialRouteName: 'Search',

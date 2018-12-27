@@ -3,7 +3,7 @@
 export { withNavigation, SafeAreaView } from 'react-navigation';
 type NavigationStateParameters = Object;
 
-export type RouteNames = 'TvShow' | 'TvFavorite' | 'Episode';
+export type RouteNames = 'TvShow' | 'Episode';
 
 export type NavigationListener = (
   key: 'willBlur' | 'willFocus' | 'didFocus' | 'didBlur',

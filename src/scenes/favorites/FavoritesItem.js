@@ -15,7 +15,7 @@ type Props = {|
 
 class FavoritesItem extends React.Component<Props> {
   onPress = () => {
-    this.props.navigation.navigate('TvFavorite', {
+    this.props.navigation.navigate('TvShow', {
       id: this.props.data.id,
       name: this.props.data.name,
     });
