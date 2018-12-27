@@ -30,6 +30,7 @@ const network = new RelayNetworkLayer([
   cacheMiddleware({
     size: 500,
     ttl: 15 * 60 * 1000, // 15 minutes
+    clearOnMutation: true,
   }),
 ]);
 
