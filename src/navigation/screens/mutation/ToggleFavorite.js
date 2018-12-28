@@ -51,7 +51,7 @@ const deleteConfig = [
         key: connectionKey,
       },
     ],
-    pathToConnection: ['client:root', 'tvShow'],
+    pathToConnection: [parentID, 'favorites'],
     deletedIDFieldName: 'serieId',
   },
 ];

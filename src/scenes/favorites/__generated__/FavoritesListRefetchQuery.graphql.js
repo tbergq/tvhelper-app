@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 63cee7a9fa02b81eccae438a648d2530
+ * @relayHash 56b1bbb0b56d709287e7f2281fa9ff24
  */
 
 /* eslint-disable */
@@ -91,26 +91,20 @@ var v0 = [
   }
 ],
 v1 = {
-  "kind": "Variable",
-  "name": "options",
-  "variableName": "options",
-  "type": "SortOptions"
-},
-v2 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "cursor",
   "args": null,
   "storageKey": null
 },
-v3 = {
+v2 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "__typename",
   "args": null,
   "storageKey": null
 },
-v4 = {
+v3 = {
   "kind": "LinkedField",
   "alias": null,
   "name": "pageInfo",
@@ -135,16 +129,21 @@ v4 = {
     }
   ]
 },
-v5 = [
+v4 = [
   {
     "kind": "Variable",
     "name": "first",
     "variableName": "first",
     "type": "Int"
   },
-  v1
+  {
+    "kind": "Variable",
+    "name": "options",
+    "variableName": "options",
+    "type": "SortOptions"
+  }
 ],
-v6 = {
+v5 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "id",
@@ -181,9 +180,7 @@ return {
         "alias": "favorites",
         "name": "__FavoritesScene_favorites_connection",
         "storageKey": null,
-        "args": [
-          v1
-        ],
+        "args": null,
         "concreteType": "TvShowConnection",
         "plural": false,
         "selections": [
@@ -201,7 +198,7 @@ return {
                 "name": "FavoritesList",
                 "args": null
               },
-              v2,
+              v1,
               {
                 "kind": "LinkedField",
                 "alias": null,
@@ -211,12 +208,12 @@ return {
                 "concreteType": "TvShow",
                 "plural": false,
                 "selections": [
-                  v3
+                  v2
                 ]
               }
             ]
           },
-          v4
+          v3
         ]
       }
     ]
@@ -231,7 +228,7 @@ return {
         "alias": null,
         "name": "favorites",
         "storageKey": null,
-        "args": v5,
+        "args": v4,
         "concreteType": "TvShowConnection",
         "plural": false,
         "selections": [
@@ -253,7 +250,7 @@ return {
                 "concreteType": "TvShow",
                 "plural": false,
                 "selections": [
-                  v6,
+                  v5,
                   {
                     "kind": "ScalarField",
                     "alias": null,
@@ -277,7 +274,7 @@ return {
                         "args": null,
                         "storageKey": null
                       },
-                      v6
+                      v5
                     ]
                   },
                   {
@@ -301,30 +298,28 @@ return {
                     "args": null,
                     "storageKey": null
                   },
-                  v3
+                  v2
                 ]
               },
-              v2
+              v1
             ]
           },
-          v4
+          v3
         ]
       },
       {
         "kind": "LinkedHandle",
         "alias": null,
         "name": "favorites",
-        "args": v5,
+        "args": v4,
         "handle": "connection",
         "key": "FavoritesScene_favorites",
-        "filters": [
-          "options"
-        ]
+        "filters": []
       }
     ]
   }
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = 'b5f58ee5794cd32fa9342027580f8d29';
+(node/*: any*/).hash = 'b746c9b879fadedd7a823ffadee37acc';
 module.exports = node;

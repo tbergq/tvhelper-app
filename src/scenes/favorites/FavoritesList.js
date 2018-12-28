@@ -99,7 +99,7 @@ export default createRefetchContainer(
   graphql`
     query FavoritesListRefetchQuery($first: Int, $options: SortOptions) {
       favorites(first: $first, options: $options)
-        @connection(key: "FavoritesScene_favorites") {
+        @connection(key: "FavoritesScene_favorites", filters: []) {
         edges {
           ...FavoritesList
         }

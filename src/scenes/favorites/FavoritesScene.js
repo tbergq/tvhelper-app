@@ -29,7 +29,7 @@ export default class FavoritesScene extends React.Component<Props> {
         query={graphql`
           query FavoritesSceneQuery($first: Int, $options: SortOptions) {
             favorites(first: $first, options: $options)
-              @connection(key: "FavoritesScene_favorites") {
+              @connection(key: "FavoritesScene_favorites", filters: []) {
               edges {
                 ...FavoritesList
               }
