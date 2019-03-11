@@ -10,7 +10,7 @@ const XSMAX_HEIGHT = 896;
 
 const { height: D_HEIGHT, width: D_WIDTH } = Dimensions.get('window');
 
-export default () => {
+const isIphoneX = () => {
   if (Platform.OS === 'web') return false;
 
   return (
@@ -21,3 +21,5 @@ export default () => {
       (D_HEIGHT === XSMAX_WIDTH && D_WIDTH === XSMAX_HEIGHT))
   );
 };
+
+export default isIphoneX;

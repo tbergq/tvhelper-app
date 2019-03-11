@@ -18,7 +18,7 @@ type Args = {|
   +episodeId: string,
 |};
 
-export default ({ onCompleted, onError, episodeId }: Args) => {
+const markAsWatched = ({ onCompleted, onError, episodeId }: Args) => {
   commitMutation({
     mutation,
     variables: { episodeId },
@@ -35,3 +35,5 @@ export default ({ onCompleted, onError, episodeId }: Args) => {
     },
   });
 };
+
+export default markAsWatched;

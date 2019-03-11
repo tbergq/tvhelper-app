@@ -20,7 +20,7 @@ type Args = {|
   +password: string,
 |};
 
-export default ({ onCompleted, onError, username, password }: Args) => {
+const loginMutation = ({ onCompleted, onError, username, password }: Args) => {
   commitMutation({
     mutation,
     variables: { username, password },
@@ -28,3 +28,5 @@ export default ({ onCompleted, onError, username, password }: Args) => {
     onError,
   });
 };
+
+export default loginMutation;

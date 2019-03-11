@@ -4,9 +4,9 @@
   "version": "0.0.0",
   "main": "index.js",
   "dependencies": {
+    "@tbergq/tvhelper-components": "^0",
     "react-relay": "^1.7.0",
-    "react-relay-network-modern": "^2.5.0",
-    "@tbergq/tvhelper-components": "^0"
+    "react-relay-network-modern": "^2.5.0"
   },
   "devDependencies": {
     "graphql": "^14.0.2",

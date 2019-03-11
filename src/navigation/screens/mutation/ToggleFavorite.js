@@ -56,7 +56,7 @@ const deleteConfig = [
   },
 ];
 
-export default (
+const toggleFavorite = (
   { serieId, add }: ToggleFavoriteMutationVariables,
   onCompleted: () => void,
 ) => {
@@ -68,3 +68,5 @@ export default (
     configs: add ? addConfig : deleteConfig,
   });
 };
+
+export default toggleFavorite;

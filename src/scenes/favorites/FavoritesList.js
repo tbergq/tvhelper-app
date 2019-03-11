@@ -33,7 +33,7 @@ class FavoritesList extends React.Component<Props, State> {
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState.isRefreshing) {
-      this.setState({ isRefreshing: false });
+      this.setState({ isRefreshing: false }); // eslint-disable-line react/no-did-update-set-state
     }
   }
 
@@ -44,7 +44,9 @@ class FavoritesList extends React.Component<Props, State> {
         options: this.props.options,
       },
       null,
-      null,
+      () => {
+        this.setState({ isRefreshing: false });
+      },
       { force: true },
     );
   };

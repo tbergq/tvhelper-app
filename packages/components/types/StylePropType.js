@@ -1,6 +1,6 @@
 // @flow strict
 
-/* eslint-disable camelcase */
+/* eslint-disable camelcase, babel/camelcase */
 /**
  * Styles are only reexported here to avoid importing internal RN libraries
  * everywhere (types are not exported directly).
