@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 5e274b375a2a90839859309ce5746bd1
+ * @relayHash 9f6d05256325b3ab9906719e3aad9f16
  */
 
 /* eslint-disable */
@@ -9,26 +9,26 @@
 
 /*::
 import type { ConcreteRequest } from 'relay-runtime';
-export type MarkAsWatchedMutationVariables = {|
+export type DeleteAsWatchedMutationVariables = {|
   episodeId: string
 |};
-export type MarkAsWatchedMutationResponse = {|
-  +markAsWatched: ?{|
+export type DeleteAsWatchedMutationResponse = {|
+  +deleteWatchedEpisode: ?{|
     +success: ?boolean
   |}
 |};
-export type MarkAsWatchedMutation = {|
-  variables: MarkAsWatchedMutationVariables,
-  response: MarkAsWatchedMutationResponse,
+export type DeleteAsWatchedMutation = {|
+  variables: DeleteAsWatchedMutationVariables,
+  response: DeleteAsWatchedMutationResponse,
 |};
 */
 
 
 /*
-mutation MarkAsWatchedMutation(
+mutation DeleteAsWatchedMutation(
   $episodeId: ID!
 ) {
-  markAsWatched(episodeId: $episodeId) {
+  deleteWatchedEpisode(episodeId: $episodeId) {
     success
     id
   }
@@ -62,13 +62,13 @@ v2 = {
 return {
   "kind": "Request",
   "operationKind": "mutation",
-  "name": "MarkAsWatchedMutation",
+  "name": "DeleteAsWatchedMutation",
   "id": null,
-  "text": "mutation MarkAsWatchedMutation(\n  $episodeId: ID!\n) {\n  markAsWatched(episodeId: $episodeId) {\n    success\n    id\n  }\n}\n",
+  "text": "mutation DeleteAsWatchedMutation(\n  $episodeId: ID!\n) {\n  deleteWatchedEpisode(episodeId: $episodeId) {\n    success\n    id\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
-    "name": "MarkAsWatchedMutation",
+    "name": "DeleteAsWatchedMutation",
     "type": "RootMutation",
     "metadata": null,
     "argumentDefinitions": v0,
@@ -76,7 +76,7 @@ return {
       {
         "kind": "LinkedField",
         "alias": null,
-        "name": "markAsWatched",
+        "name": "deleteWatchedEpisode",
         "storageKey": null,
         "args": v1,
         "concreteType": "EpisodeWatched",
@@ -89,13 +89,13 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "MarkAsWatchedMutation",
+    "name": "DeleteAsWatchedMutation",
     "argumentDefinitions": v0,
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
-        "name": "markAsWatched",
+        "name": "deleteWatchedEpisode",
         "storageKey": null,
         "args": v1,
         "concreteType": "EpisodeWatched",
@@ -116,5 +116,5 @@ return {
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = 'c08b1715513eb5a9fa61dd9cc8ab5cb6';
+(node/*: any*/).hash = 'dcaec6cfb2b12dbc60edc30e29556d9a';
 module.exports = node;

@@ -7,6 +7,7 @@ import { StyleSheet, ActivityIndicator } from 'react-native';
 
 import type { ToggleWatched as ToggleWatchedType } from './__generated__/ToggleWatched.graphql';
 import markAsWatchedMutation from './mutation/MarkAsWatchedMutation';
+import deleteAsWatchedMutation from './mutation/DeleteAsWatched';
 
 type Props = {|
   +data: ToggleWatchedType,
@@ -22,17 +23,28 @@ class ToggleWatched extends React.Component<Props, State> {
   };
 
   onPress = () => {
+    this.setState({ isLoading: true });
+    const episodeId = this.props.data.id;
+
+    if (episodeId == null) {
+      return;
+    }
+
     if (this.props.data.watched === false) {
-      this.setState({ isLoading: true });
       markAsWatchedMutation({
-        episodeId: this.props.data.id ?? '',
-        onCompleted: () => {
-          this.setState({ isLoading: false });
-        },
+        episodeId,
+        onCompleted: this.onCompleted,
       });
     } else {
-      console.warn('TODO'); // eslint-disable-line no-console
+      deleteAsWatchedMutation({
+        onCompleted: this.onCompleted,
+        episodeId,
+      });
     }
+  };
+
+  onCompleted = () => {
+    this.setState({ isLoading: false });
   };
 
   render() {

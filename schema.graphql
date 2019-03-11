@@ -9,6 +9,10 @@ type Cast {
   character: Person
 }
 
+type CreateUserMutation {
+  success: Boolean
+}
+
 """
 A date string, such as 2007-12-03, compliant with the `full-date` format
 outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for
@@ -31,12 +35,13 @@ type Episode {
   watched: Boolean
 }
 
-type LoginType {
-  token: String
+type EpisodeWatched {
   success: Boolean
+  id: ID
 }
 
-type MarkAsWatched {
+type LoginType {
+  token: String
   success: Boolean
 }
 
@@ -63,10 +68,13 @@ type Person {
 
 """Root Mutation."""
 type RootMutation {
-  login(username: String!, password: String!): LoginType
+  createUser(username: String!, password: String!, email: String!): CreateUserMutation
+
+  """Delete an episode as watched"""
+  deleteWatchedEpisode(episodeId: ID!): EpisodeWatched
 
   """Mark an episode as watched"""
-  markAsWatched(episodeId: ID!): MarkAsWatched
+  markAsWatched(episodeId: ID!): EpisodeWatched
 
   """Toggle tv show from favorite list"""
   toggleFavorite(serieId: ID!, add: Boolean!): ToggleFavorite
@@ -86,9 +94,6 @@ type RootQuery {
 
   """Tv show lookup by id"""
   tvShowDetail(id: ID!): TvShow
-
-  """Test"""
-  test: TestType
 }
 
 enum SortBy {
@@ -106,12 +111,6 @@ enum SortDirection {
 input SortOptions {
   sortDirection: SortDirection = ASC
   sortBy: SortBy = NAME
-}
-
-"""Test"""
-type TestType {
-  id: ID
-  test: String
 }
 
 type ToggleFavorite {
