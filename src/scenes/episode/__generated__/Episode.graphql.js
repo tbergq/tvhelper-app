@@ -7,7 +7,7 @@
 'use strict';
 
 /*::
-import type { ConcreteFragment } from 'relay-runtime';
+import type { ReaderFragment } from 'relay-runtime';
 type ToggleWatched$ref = any;
 type TvHelperImage$ref = any;
 import type { FragmentReference } from "relay-runtime";
@@ -24,7 +24,7 @@ export type Episode = {|
 */
 
 
-const node/*: ConcreteFragment*/ = {
+const node/*: ReaderFragment*/ = {
   "kind": "Fragment",
   "name": "Episode",
   "type": "Episode",

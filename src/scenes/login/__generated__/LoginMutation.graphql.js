@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash d619d319be070c687c3d2f0745871c59
+ * @relayHash 6ac4d7ede2d06b8b358bf97b9a76dcda
  */
 
 /* eslint-disable */
@@ -95,24 +95,26 @@ v1 = [
 ];
 return {
   "kind": "Request",
-  "operationKind": "mutation",
-  "name": "LoginMutation",
-  "id": null,
-  "text": "mutation LoginMutation(\n  $username: String!\n  $password: String!\n) {\n  tvHelperLogin(username: $username, password: $password) {\n    token\n    success\n  }\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "LoginMutation",
     "type": "RootMutation",
     "metadata": null,
-    "argumentDefinitions": v0,
-    "selections": v1
+    "argumentDefinitions": (v0/*: any*/),
+    "selections": (v1/*: any*/)
   },
   "operation": {
     "kind": "Operation",
     "name": "LoginMutation",
-    "argumentDefinitions": v0,
-    "selections": v1
+    "argumentDefinitions": (v0/*: any*/),
+    "selections": (v1/*: any*/)
+  },
+  "params": {
+    "operationKind": "mutation",
+    "name": "LoginMutation",
+    "id": null,
+    "text": "mutation LoginMutation(\n  $username: String!\n  $password: String!\n) {\n  tvHelperLogin(username: $username, password: $password) {\n    token\n    success\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();

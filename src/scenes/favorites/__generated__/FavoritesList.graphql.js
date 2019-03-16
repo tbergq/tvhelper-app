@@ -7,7 +7,7 @@
 'use strict';
 
 /*::
-import type { ConcreteFragment } from 'relay-runtime';
+import type { ReaderFragment } from 'relay-runtime';
 type FavoritesItem$ref = any;
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type FavoritesList$ref: FragmentReference;
@@ -21,7 +21,7 @@ export type FavoritesList = $ReadOnlyArray<{|
 */
 
 
-const node/*: ConcreteFragment*/ = {
+const node/*: ReaderFragment*/ = {
   "kind": "Fragment",
   "name": "FavoritesList",
   "type": "TvShowEdge",

@@ -7,7 +7,7 @@
 'use strict';
 
 /*::
-import type { ConcreteFragment } from 'relay-runtime';
+import type { ReaderFragment } from 'relay-runtime';
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type CastItem$ref: FragmentReference;
 export type CastItem = {|
@@ -28,7 +28,7 @@ export type CastItem = {|
 */
 
 
-const node/*: ConcreteFragment*/ = (function(){
+const node/*: ReaderFragment*/ = (function(){
 var v0 = [
   {
     "kind": "ScalarField",
@@ -71,7 +71,7 @@ return {
       "args": null,
       "concreteType": "Person",
       "plural": false,
-      "selections": v0
+      "selections": (v0/*: any*/)
     },
     {
       "kind": "LinkedField",
@@ -81,7 +81,7 @@ return {
       "args": null,
       "concreteType": "Person",
       "plural": false,
-      "selections": v0
+      "selections": (v0/*: any*/)
     }
   ]
 };

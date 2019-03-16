@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash fa27d5ca3525be1d423b545a64c81839
+ * @relayHash 332e095f7290048b29c67a6a51f3eaf6
  */
 
 /* eslint-disable */
@@ -82,24 +82,19 @@ v2 = {
 };
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "EpisodeSceneQuery",
-  "id": null,
-  "text": "query EpisodeSceneQuery(\n  $id: ID!\n) {\n  episode(id: $id) {\n    ...Episode\n    id\n  }\n}\n\nfragment Episode on Episode {\n  name\n  summary\n  image {\n    ...TvHelperImage\n    id\n  }\n  ...ToggleWatched\n}\n\nfragment TvHelperImage on TvHelperImage {\n  medium\n  original\n}\n\nfragment ToggleWatched on Episode {\n  id\n  watched\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "EpisodeSceneQuery",
     "type": "RootQuery",
     "metadata": null,
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "episode",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": "Episode",
         "plural": false,
         "selections": [
@@ -115,14 +110,14 @@ return {
   "operation": {
     "kind": "Operation",
     "name": "EpisodeSceneQuery",
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "episode",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": "Episode",
         "plural": false,
         "selections": [
@@ -163,10 +158,10 @@ return {
                 "args": null,
                 "storageKey": null
               },
-              v2
+              (v2/*: any*/)
             ]
           },
-          v2,
+          (v2/*: any*/),
           {
             "kind": "ScalarField",
             "alias": null,
@@ -177,6 +172,13 @@ return {
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "EpisodeSceneQuery",
+    "id": null,
+    "text": "query EpisodeSceneQuery(\n  $id: ID!\n) {\n  episode(id: $id) {\n    ...Episode\n    id\n  }\n}\n\nfragment Episode on Episode {\n  name\n  summary\n  image {\n    ...TvHelperImage\n    id\n  }\n  ...ToggleWatched\n}\n\nfragment TvHelperImage on TvHelperImage {\n  medium\n  original\n}\n\nfragment ToggleWatched on Episode {\n  id\n  watched\n}\n",
+    "metadata": {}
   }
 };
 })();

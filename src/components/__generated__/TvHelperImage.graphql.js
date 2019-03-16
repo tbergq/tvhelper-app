@@ -7,7 +7,7 @@
 'use strict';
 
 /*::
-import type { ConcreteFragment } from 'relay-runtime';
+import type { ReaderFragment } from 'relay-runtime';
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type TvHelperImage$ref: FragmentReference;
 export type TvHelperImage = {|
@@ -18,7 +18,7 @@ export type TvHelperImage = {|
 */
 
 
-const node/*: ConcreteFragment*/ = {
+const node/*: ReaderFragment*/ = {
   "kind": "Fragment",
   "name": "TvHelperImage",
   "type": "TvHelperImage",

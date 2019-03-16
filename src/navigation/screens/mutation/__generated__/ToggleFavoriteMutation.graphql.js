@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 31a40a04f3b1ee4699118c7efe1d1216
+ * @relayHash 33dd62fa733c865f9c30b71ae39e881d
  */
 
 /* eslint-disable */
@@ -150,29 +150,24 @@ v9 = {
 };
 return {
   "kind": "Request",
-  "operationKind": "mutation",
-  "name": "ToggleFavoriteMutation",
-  "id": null,
-  "text": "mutation ToggleFavoriteMutation(\n  $serieId: ID!\n  $add: Boolean!\n) {\n  toggleFavorite(serieId: $serieId, add: $add) {\n    success\n    serieId\n    tvShow {\n      node {\n        id\n        name\n        image {\n          original\n          medium\n          id\n        }\n        previousEpisode\n        nextEpisode\n      }\n    }\n  }\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "ToggleFavoriteMutation",
     "type": "RootMutation",
     "metadata": null,
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "toggleFavorite",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": "ToggleFavorite",
         "plural": false,
         "selections": [
-          v2,
-          v3,
+          (v2/*: any*/),
+          (v3/*: any*/),
           {
             "kind": "LinkedField",
             "alias": null,
@@ -191,8 +186,8 @@ return {
                 "concreteType": "TvShow",
                 "plural": false,
                 "selections": [
-                  v4,
-                  v5,
+                  (v4/*: any*/),
+                  (v5/*: any*/),
                   {
                     "kind": "LinkedField",
                     "alias": null,
@@ -202,12 +197,12 @@ return {
                     "concreteType": "TvHelperImage",
                     "plural": false,
                     "selections": [
-                      v6,
-                      v7
+                      (v6/*: any*/),
+                      (v7/*: any*/)
                     ]
                   },
-                  v8,
-                  v9
+                  (v8/*: any*/),
+                  (v9/*: any*/)
                 ]
               }
             ]
@@ -219,19 +214,19 @@ return {
   "operation": {
     "kind": "Operation",
     "name": "ToggleFavoriteMutation",
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "toggleFavorite",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": "ToggleFavorite",
         "plural": false,
         "selections": [
-          v2,
-          v3,
+          (v2/*: any*/),
+          (v3/*: any*/),
           {
             "kind": "LinkedField",
             "alias": null,
@@ -250,8 +245,8 @@ return {
                 "concreteType": "TvShow",
                 "plural": false,
                 "selections": [
-                  v4,
-                  v5,
+                  (v4/*: any*/),
+                  (v5/*: any*/),
                   {
                     "kind": "LinkedField",
                     "alias": null,
@@ -261,13 +256,13 @@ return {
                     "concreteType": "TvHelperImage",
                     "plural": false,
                     "selections": [
-                      v6,
-                      v7,
-                      v4
+                      (v6/*: any*/),
+                      (v7/*: any*/),
+                      (v4/*: any*/)
                     ]
                   },
-                  v8,
-                  v9
+                  (v8/*: any*/),
+                  (v9/*: any*/)
                 ]
               }
             ]
@@ -275,6 +270,13 @@ return {
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "mutation",
+    "name": "ToggleFavoriteMutation",
+    "id": null,
+    "text": "mutation ToggleFavoriteMutation(\n  $serieId: ID!\n  $add: Boolean!\n) {\n  toggleFavorite(serieId: $serieId, add: $add) {\n    success\n    serieId\n    tvShow {\n      node {\n        id\n        name\n        image {\n          original\n          medium\n          id\n        }\n        previousEpisode\n        nextEpisode\n      }\n    }\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();

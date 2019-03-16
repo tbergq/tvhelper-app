@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 56b1bbb0b56d709287e7f2281fa9ff24
+ * @relayHash ed25fb851be8f323a9717f5df3bc24f8
  */
 
 /* eslint-disable */
@@ -12,10 +12,10 @@ import type { ConcreteRequest } from 'relay-runtime';
 type FavoritesList$ref = any;
 export type SortBy = "NAME" | "NEXT_EPISODE" | "PREVIOUS_EPISODE" | "STATUS" | "%future added value";
 export type SortDirection = "ASC" | "DESC" | "%future added value";
-export type SortOptions = {
+export type SortOptions = {|
   sortDirection?: ?SortDirection,
   sortBy?: ?SortBy,
-};
+|};
 export type FavoritesListRefetchQueryVariables = {|
   first?: ?number,
   options?: ?SortOptions,
@@ -152,28 +152,12 @@ v5 = {
 };
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "FavoritesListRefetchQuery",
-  "id": null,
-  "text": "query FavoritesListRefetchQuery(\n  $first: Int\n  $options: SortOptions\n) {\n  favorites(first: $first, options: $options) {\n    edges {\n      ...FavoritesList\n      cursor\n      node {\n        __typename\n        id\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment FavoritesList on TvShowEdge {\n  node {\n    id\n    ...FavoritesItem\n  }\n}\n\nfragment FavoritesItem on TvShow {\n  id\n  name\n  image {\n    medium\n    id\n  }\n  previousEpisode\n  nextEpisode\n  status\n}\n",
-  "metadata": {
-    "connection": [
-      {
-        "count": "first",
-        "cursor": null,
-        "direction": "forward",
-        "path": [
-          "favorites"
-        ]
-      }
-    ]
-  },
   "fragment": {
     "kind": "Fragment",
     "name": "FavoritesListRefetchQuery",
     "type": "RootQuery",
     "metadata": null,
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
@@ -198,7 +182,7 @@ return {
                 "name": "FavoritesList",
                 "args": null
               },
-              v1,
+              (v1/*: any*/),
               {
                 "kind": "LinkedField",
                 "alias": null,
@@ -208,12 +192,12 @@ return {
                 "concreteType": "TvShow",
                 "plural": false,
                 "selections": [
-                  v2
+                  (v2/*: any*/)
                 ]
               }
             ]
           },
-          v3
+          (v3/*: any*/)
         ]
       }
     ]
@@ -221,14 +205,14 @@ return {
   "operation": {
     "kind": "Operation",
     "name": "FavoritesListRefetchQuery",
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "favorites",
         "storageKey": null,
-        "args": v4,
+        "args": (v4/*: any*/),
         "concreteType": "TvShowConnection",
         "plural": false,
         "selections": [
@@ -250,7 +234,7 @@ return {
                 "concreteType": "TvShow",
                 "plural": false,
                 "selections": [
-                  v5,
+                  (v5/*: any*/),
                   {
                     "kind": "ScalarField",
                     "alias": null,
@@ -274,7 +258,7 @@ return {
                         "args": null,
                         "storageKey": null
                       },
-                      v5
+                      (v5/*: any*/)
                     ]
                   },
                   {
@@ -298,25 +282,43 @@ return {
                     "args": null,
                     "storageKey": null
                   },
-                  v2
+                  (v2/*: any*/)
                 ]
               },
-              v1
+              (v1/*: any*/)
             ]
           },
-          v3
+          (v3/*: any*/)
         ]
       },
       {
         "kind": "LinkedHandle",
         "alias": null,
         "name": "favorites",
-        "args": v4,
+        "args": (v4/*: any*/),
         "handle": "connection",
         "key": "FavoritesScene_favorites",
         "filters": []
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "FavoritesListRefetchQuery",
+    "id": null,
+    "text": "query FavoritesListRefetchQuery(\n  $first: Int\n  $options: SortOptions\n) {\n  favorites(first: $first, options: $options) {\n    edges {\n      ...FavoritesList\n      cursor\n      node {\n        __typename\n        id\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment FavoritesList on TvShowEdge {\n  node {\n    id\n    ...FavoritesItem\n  }\n}\n\nfragment FavoritesItem on TvShow {\n  id\n  name\n  image {\n    medium\n    id\n  }\n  previousEpisode\n  nextEpisode\n  status\n}\n",
+    "metadata": {
+      "connection": [
+        {
+          "count": "first",
+          "cursor": null,
+          "direction": "forward",
+          "path": [
+            "favorites"
+          ]
+        }
+      ]
+    }
   }
 };
 })();

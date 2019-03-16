@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 5e274b375a2a90839859309ce5746bd1
+ * @relayHash f8837d60637e06a680c7b3109e9e71c4
  */
 
 /* eslint-disable */
@@ -61,28 +61,23 @@ v2 = {
 };
 return {
   "kind": "Request",
-  "operationKind": "mutation",
-  "name": "MarkAsWatchedMutation",
-  "id": null,
-  "text": "mutation MarkAsWatchedMutation(\n  $episodeId: ID!\n) {\n  markAsWatched(episodeId: $episodeId) {\n    success\n    id\n  }\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "MarkAsWatchedMutation",
     "type": "RootMutation",
     "metadata": null,
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "markAsWatched",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": "EpisodeWatched",
         "plural": false,
         "selections": [
-          v2
+          (v2/*: any*/)
         ]
       }
     ]
@@ -90,18 +85,18 @@ return {
   "operation": {
     "kind": "Operation",
     "name": "MarkAsWatchedMutation",
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "markAsWatched",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": "EpisodeWatched",
         "plural": false,
         "selections": [
-          v2,
+          (v2/*: any*/),
           {
             "kind": "ScalarField",
             "alias": null,
@@ -112,6 +107,13 @@ return {
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "mutation",
+    "name": "MarkAsWatchedMutation",
+    "id": null,
+    "text": "mutation MarkAsWatchedMutation(\n  $episodeId: ID!\n) {\n  markAsWatched(episodeId: $episodeId) {\n    success\n    id\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();
