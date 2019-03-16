@@ -1,41 +1,33 @@
-// @flow strict
+// @flow
 
-import { Environment, RecordSource, Store } from 'relay-runtime';
-import {
-  RelayNetworkLayer,
-  urlMiddleware,
-  authMiddleware,
-  retryMiddleware,
-  loggerMiddleware,
-  cacheMiddleware,
-} from 'react-relay-network-modern';
+import fetch from '@kiwicom/fetch';
 import { AsyncStorage } from 'react-native';
-
-export const TOKEN_KEY = '@tokenKey';
-
-const network = new RelayNetworkLayer([
-  urlMiddleware({
-    url: 'https://tbergq-graphql.now.sh/graphql/',
-  }),
-  authMiddleware({
-    token: async () => {
-      const token = await AsyncStorage.getItem(TOKEN_KEY);
-      return token;
-    },
-    allowEmptyToken: true,
-    prefix: '',
-  }),
-  retryMiddleware({}),
-  loggerMiddleware(),
-  cacheMiddleware({
-    size: 500,
-    ttl: 15 * 60 * 1000, // 15 minutes
-    clearOnMutation: true,
-  }),
-]);
+import { Environment, Network, RecordSource, Store } from 'relay-runtime';
 
 const source = new RecordSource();
 const store = new Store(source);
-const environment = new Environment({ network, store });
+export const TOKEN_KEY = '@tokenKey';
+
+const fetchFunction = async (operation, variables) => {
+  const token = await AsyncStorage.getItem(TOKEN_KEY);
+  const res = await fetch('https://tbergq-graphql.now.sh/graphql/', {
+    method: 'POST',
+    headers: {
+      Authorization: token,
+      'content-type': 'application/json',
+    },
+    body: JSON.stringify({
+      queryId: operation.id,
+      variables,
+    }),
+  });
+  return res.json();
+};
+const network = Network.create(fetchFunction);
+
+const environment = new Environment({
+  network,
+  store,
+});
 
 export default environment;

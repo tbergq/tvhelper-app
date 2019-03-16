@@ -11,7 +11,7 @@ import Colors from './Colors';
 
 type Props = {|
   +numberOfLines: number,
-  +children: React.Node,
+  +children: ?React.Node,
   +truncatedText: string,
   +revealedText: string,
   +style?: StylePropType,

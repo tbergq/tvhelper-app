@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 6ac4d7ede2d06b8b358bf97b9a76dcda
+ * @relayHash 63857ccc72f66fbbd1215341309bcb6c
  */
 
 /* eslint-disable */
@@ -112,8 +112,8 @@ return {
   "params": {
     "operationKind": "mutation",
     "name": "LoginMutation",
-    "id": null,
-    "text": "mutation LoginMutation(\n  $username: String!\n  $password: String!\n) {\n  tvHelperLogin(username: $username, password: $password) {\n    token\n    success\n  }\n}\n",
+    "id": "ce0cf18a23b47b29cd110b99ceef4113",
+    "text": null,
     "metadata": {}
   }
 };

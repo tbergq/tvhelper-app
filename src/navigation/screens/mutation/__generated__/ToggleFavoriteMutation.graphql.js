@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 33dd62fa733c865f9c30b71ae39e881d
+ * @relayHash 159ce819b5ef3462d246d42c45012728
  */
 
 /* eslint-disable */
@@ -274,8 +274,8 @@ return {
   "params": {
     "operationKind": "mutation",
     "name": "ToggleFavoriteMutation",
-    "id": null,
-    "text": "mutation ToggleFavoriteMutation(\n  $serieId: ID!\n  $add: Boolean!\n) {\n  toggleFavorite(serieId: $serieId, add: $add) {\n    success\n    serieId\n    tvShow {\n      node {\n        id\n        name\n        image {\n          original\n          medium\n          id\n        }\n        previousEpisode\n        nextEpisode\n      }\n    }\n  }\n}\n",
+    "id": "0a0577fc485bd7ef725a825733ce42e4",
+    "text": null,
     "metadata": {}
   }
 };

@@ -48,10 +48,11 @@ class ToggleWatched extends React.Component<Props, State> {
   };
 
   render() {
-    const text = this.props.data.watched
-      ? 'Mark as not watched'
-      : 'Mark as watched';
-    const type = this.props.data.watched ? 'danger' : 'primary';
+    const text =
+      this.props.data.watched === true
+        ? 'Mark as not watched'
+        : 'Mark as watched';
+    const type = this.props.data.watched === true ? 'danger' : 'primary';
     return this.state.isLoading ? (
       <ActivityIndicator />
     ) : (

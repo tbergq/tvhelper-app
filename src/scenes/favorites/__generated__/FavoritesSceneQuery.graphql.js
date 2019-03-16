@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 2183399f3e8d9d6d61d7a3f7a57ae8f2
+ * @relayHash 1d9f68e7771f3f3cbbf0ed3162b5c3c8
  */
 
 /* eslint-disable */
@@ -305,8 +305,8 @@ return {
   "params": {
     "operationKind": "query",
     "name": "FavoritesSceneQuery",
-    "id": null,
-    "text": "query FavoritesSceneQuery(\n  $first: Int\n  $options: SortOptions\n) {\n  favorites(first: $first, options: $options) {\n    edges {\n      ...FavoritesList\n      cursor\n      node {\n        __typename\n        id\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment FavoritesList on TvShowEdge {\n  node {\n    id\n    ...FavoritesItem\n  }\n}\n\nfragment FavoritesItem on TvShow {\n  id\n  name\n  image {\n    medium\n    id\n  }\n  previousEpisode\n  nextEpisode\n  status\n}\n",
+    "id": "fe3d05d5542b99f7a1e148b696cfcebf",
+    "text": null,
     "metadata": {
       "connection": [
         {

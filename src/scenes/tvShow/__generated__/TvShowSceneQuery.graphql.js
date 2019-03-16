@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash e39df34d1da6adf0be96fff76378d366
+ * @relayHash 94c52ad134c445a8f452a4b678383df5
  */
 
 /* eslint-disable */
@@ -294,8 +294,8 @@ return {
   "params": {
     "operationKind": "query",
     "name": "TvShowSceneQuery",
-    "id": null,
-    "text": "query TvShowSceneQuery(\n  $id: ID!\n) {\n  tvShowDetail(id: $id) {\n    ...TvDetail\n    id\n  }\n}\n\nfragment TvDetail on TvShow {\n  isFavorite\n  image {\n    original\n    id\n  }\n  ...Summary\n  ...EpisodeList\n  ...Cast\n}\n\nfragment Summary on TvShow {\n  summary\n}\n\nfragment EpisodeList on TvShow {\n  episodes {\n    id\n    ...EpisodeItem\n  }\n}\n\nfragment Cast on TvShow {\n  cast {\n    id\n    ...CastItem\n  }\n}\n\nfragment CastItem on Cast {\n  person {\n    name\n    image {\n      medium\n      id\n    }\n    id\n  }\n  character {\n    name\n    image {\n      medium\n      id\n    }\n    id\n  }\n}\n\nfragment EpisodeItem on Episode {\n  id\n  seasonAndNumber\n  name\n  airdate\n  watched\n}\n",
+    "id": "2ddca74e3d17d01ac8e69c8a2f59329e",
+    "text": null,
     "metadata": {}
   }
 };

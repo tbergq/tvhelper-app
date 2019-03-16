@@ -9,7 +9,7 @@
     "flow": "flow --include-warnings",
     "test-ci": "yarn lint && yarn flow && yarn test",
     "test": "node node_modules/jest/bin/jest.js --config=.jest.json",
-    "relay": "yarn relay-compiler --src ./src --schema ./schema.graphql",
+    "relay": "yarn relay-compiler --src ./src --schema ./schema.graphql --persist-output ./persisted-queries.json",
     "graphql": "yarn babel-node scripts/getSchema.js",
     "deploy": "expo publish"
   },
@@ -40,7 +40,7 @@
     "eslint": "^5.15.1",
     "eslint-config-prettier": "^3.3.0",
     "eslint-plugin-prettier": "^3.0.0",
-    "flow-bin": "^0.78.0",
+    "flow-bin": "^0.95.1",
     "jest": "^23.6.0",
     "jest-expo": "^32.0.0",
     "prettier": "^1.15.3",

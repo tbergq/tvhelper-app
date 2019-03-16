@@ -27,6 +27,8 @@ esproposal.nullish_coalescing=enable
 <PROJECT_ROOT>/node_modules/react-native-testing-library/.+
 <PROJECT_ROOT>/node_modules/graphql/.+
 <PROJECT_ROOT>/node_modules/react-relay-network-modern/lib/fetchWithMiddleware.js
+<PROJECT_ROOT>/node_modules/@kiwicom/js/src/.+
+<PROJECT_ROOT>/node_modules/@kiwicom/fetch/src/.+
 
 [strict]
 ;nonstrict-import
@@ -37,4 +39,4 @@ unsafe-getters-setters
 sketchy-null
 
 [version]
-^0.78.0
+^0.95.1

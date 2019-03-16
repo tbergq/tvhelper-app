@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash f8837d60637e06a680c7b3109e9e71c4
+ * @relayHash 54b7178e15e54885f6b0c63af55e5369
  */
 
 /* eslint-disable */
@@ -111,8 +111,8 @@ return {
   "params": {
     "operationKind": "mutation",
     "name": "MarkAsWatchedMutation",
-    "id": null,
-    "text": "mutation MarkAsWatchedMutation(\n  $episodeId: ID!\n) {\n  markAsWatched(episodeId: $episodeId) {\n    success\n    id\n  }\n}\n",
+    "id": "c08b1715513eb5a9fa61dd9cc8ab5cb6",
+    "text": null,
     "metadata": {}
   }
 };

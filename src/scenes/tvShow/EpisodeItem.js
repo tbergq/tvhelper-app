@@ -25,7 +25,12 @@ class EpisodeItem extends React.Component<Props> {
     const airdate = this.props.data.airdate ?? 'Unknown';
     return (
       <Touchable onPress={this.onPress} delayPressIn={70}>
-        <View style={[styles.row, this.props.data.watched && styles.watched]}>
+        <View
+          style={[
+            styles.row,
+            this.props.data.watched === true && styles.watched,
+          ]}
+        >
           <Text>{this.props.data.seasonAndNumber}</Text>
           <Text>{this.props.data.name}</Text>
           <Text>{airdate}</Text>

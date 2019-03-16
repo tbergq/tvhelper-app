@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 332e095f7290048b29c67a6a51f3eaf6
+ * @relayHash cdc3f8957d3039de3f4590c58ce38ad3
  */
 
 /* eslint-disable */
@@ -176,8 +176,8 @@ return {
   "params": {
     "operationKind": "query",
     "name": "EpisodeSceneQuery",
-    "id": null,
-    "text": "query EpisodeSceneQuery(\n  $id: ID!\n) {\n  episode(id: $id) {\n    ...Episode\n    id\n  }\n}\n\nfragment Episode on Episode {\n  name\n  summary\n  image {\n    ...TvHelperImage\n    id\n  }\n  ...ToggleWatched\n}\n\nfragment TvHelperImage on TvHelperImage {\n  medium\n  original\n}\n\nfragment ToggleWatched on Episode {\n  id\n  watched\n}\n",
+    "id": "1c75ece6dd9573393d55847834bc2d48",
+    "text": null,
     "metadata": {}
   }
 };

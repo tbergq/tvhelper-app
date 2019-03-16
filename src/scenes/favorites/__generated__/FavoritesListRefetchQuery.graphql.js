@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash ed25fb851be8f323a9717f5df3bc24f8
+ * @relayHash 61f7c42eace3597325b67ec29fa1ac18
  */
 
 /* eslint-disable */
@@ -305,8 +305,8 @@ return {
   "params": {
     "operationKind": "query",
     "name": "FavoritesListRefetchQuery",
-    "id": null,
-    "text": "query FavoritesListRefetchQuery(\n  $first: Int\n  $options: SortOptions\n) {\n  favorites(first: $first, options: $options) {\n    edges {\n      ...FavoritesList\n      cursor\n      node {\n        __typename\n        id\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment FavoritesList on TvShowEdge {\n  node {\n    id\n    ...FavoritesItem\n  }\n}\n\nfragment FavoritesItem on TvShow {\n  id\n  name\n  image {\n    medium\n    id\n  }\n  previousEpisode\n  nextEpisode\n  status\n}\n",
+    "id": "b746c9b879fadedd7a823ffadee37acc",
+    "text": null,
     "metadata": {
       "connection": [
         {
