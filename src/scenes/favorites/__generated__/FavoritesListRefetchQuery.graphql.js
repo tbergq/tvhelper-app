@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash b813d1126f189501cff703323641440e
+ * @relayHash c888de51030bb1128f026ef93b4b6267
  */
 
 /* eslint-disable */
@@ -264,7 +264,7 @@ return {
         "name": "favorites",
         "args": (v1/*: any*/),
         "handle": "connection",
-        "key": "FavoritesList_favorites",
+        "key": "FavoritesScene_favorites",
         "filters": []
       }
     ]

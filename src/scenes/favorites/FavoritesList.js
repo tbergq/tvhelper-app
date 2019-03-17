@@ -99,7 +99,7 @@ export default createRefetchContainer(
           }
         ) {
         favorites(first: $first, options: $options)
-          @connection(key: "FavoritesList_favorites", filters: []) {
+          @connection(key: "FavoritesScene_favorites", filters: []) {
           edges {
             node {
               id

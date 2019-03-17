@@ -62,7 +62,7 @@ const node/*: ReaderFragment*/ = {
     {
       "kind": "LinkedField",
       "alias": "favorites",
-      "name": "__FavoritesList_favorites_connection",
+      "name": "__FavoritesScene_favorites_connection",
       "storageKey": null,
       "args": null,
       "concreteType": "TvShowConnection",
@@ -146,5 +146,5 @@ const node/*: ReaderFragment*/ = {
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = 'f439ee171d530e1705e0dd9d714be7b9';
+(node/*: any*/).hash = 'bec0a24f0bba392574f5d25c6953d382';
 module.exports = node;

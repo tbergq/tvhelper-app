@@ -10,6 +10,7 @@
     "test-ci": "yarn lint && yarn flow && yarn test",
     "test": "node node_modules/jest/bin/jest.js --config=.jest.json",
     "relay": "yarn relay-compiler --src ./src --schema ./schema.graphql --verbose",
+    "relay:persist": "yarn relay-compiler --src ./src --schema ./schema.graphql --persist-output ./persisted-queries.json",
     "graphql": "yarn babel-node scripts/getSchema.js",
     "deploy": "expo publish"
   },
