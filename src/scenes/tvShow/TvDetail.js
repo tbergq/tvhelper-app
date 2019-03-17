@@ -4,19 +4,19 @@ import * as React from 'react';
 import { createFragmentContainer, graphql } from '@tbergq/tvhelper-relay';
 import { ScrollView, View, StyleSheet, Image } from 'react-native';
 
-import type { TvDetail as TvDetailType } from './__generated__/TvDetail.graphql';
+import type { TvDetail_data as TvDetailType } from './__generated__/TvDetail_data.graphql';
 import Summary from './Summary';
 import EpisodeList from './EpisodeList';
 import Cast from './Cast';
 
 type Props = {|
-  +data: TvDetailType,
+  +data: ?TvDetailType,
   +setIsFavorite: (?boolean) => void,
 |};
 
 class TvDetail extends React.Component<Props> {
   componentDidMount() {
-    const isFavorite = this.props.data.isFavorite;
+    const isFavorite = this.props.data?.isFavorite;
     this.props.setIsFavorite(isFavorite);
   }
 
@@ -24,7 +24,7 @@ class TvDetail extends React.Component<Props> {
     return (
       <ScrollView>
         <Image
-          source={{ uri: this.props.data.image?.original }}
+          source={{ uri: this.props.data?.image?.original }}
           style={styles.image}
           resizeMode="stretch"
         />
@@ -56,17 +56,16 @@ const styles = StyleSheet.create({
   },
 });
 
-export default createFragmentContainer(
-  TvDetail,
-  graphql`
-    fragment TvDetail on TvShow {
+export default createFragmentContainer(TvDetail, {
+  data: graphql`
+    fragment TvDetail_data on TvShow {
       isFavorite
       image {
         original
       }
-      ...Summary
-      ...EpisodeList
-      ...Cast
+      ...Summary_data
+      ...EpisodeList_data
+      ...Cast_data
     }
   `,
-);
+});

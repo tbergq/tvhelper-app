@@ -9,17 +9,17 @@
 /*::
 import type { ReaderFragment } from 'relay-runtime';
 import type { FragmentReference } from "relay-runtime";
-declare export opaque type Summary$ref: FragmentReference;
-export type Summary = {|
+declare export opaque type Summary_data$ref: FragmentReference;
+export type Summary_data = {|
   +summary: ?string,
-  +$refType: Summary$ref,
+  +$refType: Summary_data$ref,
 |};
 */
 
 
 const node/*: ReaderFragment*/ = {
   "kind": "Fragment",
-  "name": "Summary",
+  "name": "Summary_data",
   "type": "TvShow",
   "metadata": null,
   "argumentDefinitions": [],
@@ -34,5 +34,5 @@ const node/*: ReaderFragment*/ = {
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = '5980cc764220fcd8b544a630148f17a5';
+(node/*: any*/).hash = '1667a1087c4334e4af14c7885927a56b';
 module.exports = node;

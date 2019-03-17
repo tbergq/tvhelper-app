@@ -22,7 +22,7 @@ export default class EpisodeScene extends React.Component<Props> {
         query={graphql`
           query EpisodeSceneQuery($id: ID!) {
             episode(id: $id) {
-              ...Episode
+              ...Episode_data
             }
           }
         `}

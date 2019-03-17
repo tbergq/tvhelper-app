@@ -6,11 +6,11 @@ import { Text, Touchable, Colors } from '@tbergq/tvhelper-components';
 import { StyleSheet, Animated } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 
-import type { EpisodeList as EpisodeListType } from './__generated__/EpisodeList.graphql';
+import type { EpisodeList_data as EpisodeListType } from './__generated__/EpisodeList_data.graphql';
 import EpisodeItem from './EpisodeItem';
 
 type Props = {|
-  +data: EpisodeListType,
+  +data: ?EpisodeListType,
 |};
 
 type State = {|
@@ -50,7 +50,7 @@ class EpisodeList extends React.Component<Props, State> {
   };
 
   render() {
-    const data = this.props.data.episodes ?? [];
+    const data = this.props.data?.episodes ?? [];
     const transformation = this.iconAnimation.interpolate({
       inputRange: [0, 1],
       outputRange: ['0deg', '180deg'],
@@ -95,14 +95,13 @@ const styles = StyleSheet.create({
   },
 });
 
-export default createFragmentContainer(
-  EpisodeList,
-  graphql`
-    fragment EpisodeList on TvShow {
+export default createFragmentContainer(EpisodeList, {
+  data: graphql`
+    fragment EpisodeList_data on TvShow {
       episodes {
         id
-        ...EpisodeItem
+        ...EpisodeItem_data
       }
     }
   `,
-);
+});

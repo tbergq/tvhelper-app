@@ -15,12 +15,7 @@ type Props = {|
 
 export default class FavoritesScene extends React.Component<Props> {
   renderInner = (props: FavoritesSceneQueryResponse) => {
-    return (
-      <FavoritesList
-        data={props.favorites?.edges}
-        options={this.props.options}
-      />
-    );
+    return <FavoritesList data={props} options={this.props.options} />;
   };
 
   render() {
@@ -28,12 +23,7 @@ export default class FavoritesScene extends React.Component<Props> {
       <QueryRenderer
         query={graphql`
           query FavoritesSceneQuery($first: Int, $options: SortOptions) {
-            favorites(first: $first, options: $options)
-              @connection(key: "FavoritesScene_favorites", filters: []) {
-              edges {
-                ...FavoritesList
-              }
-            }
+            ...FavoritesList_data @arguments(options: $options, first: $first)
           }
         `}
         render={this.renderInner}

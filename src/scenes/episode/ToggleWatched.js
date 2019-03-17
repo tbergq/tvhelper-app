@@ -5,57 +5,40 @@ import { Button } from '@tbergq/tvhelper-components';
 import { createFragmentContainer, graphql } from '@tbergq/tvhelper-relay';
 import { StyleSheet, ActivityIndicator } from 'react-native';
 
-import type { ToggleWatched as ToggleWatchedType } from './__generated__/ToggleWatched.graphql';
+import type { ToggleWatched_data as ToggleWatchedType } from './__generated__/ToggleWatched_data.graphql';
 import markAsWatchedMutation from './mutation/MarkAsWatchedMutation';
 import deleteAsWatchedMutation from './mutation/DeleteAsWatched';
 
 type Props = {|
-  +data: ToggleWatchedType,
+  +data: ?ToggleWatchedType,
 |};
 
-type State = {|
-  isLoading: boolean,
-|};
-
-class ToggleWatched extends React.Component<Props, State> {
-  state = {
-    isLoading: false,
-  };
-
+class ToggleWatched extends React.Component<Props> {
   onPress = () => {
-    this.setState({ isLoading: true });
-    const episodeId = this.props.data.id;
+    const episodeId = this.props.data?.id;
 
     if (episodeId == null) {
       return;
     }
 
-    if (this.props.data.watched === false) {
+    if (this.props.data?.watched === false) {
       markAsWatchedMutation({
         episodeId,
-        onCompleted: this.onCompleted,
       });
     } else {
       deleteAsWatchedMutation({
-        onCompleted: this.onCompleted,
         episodeId,
       });
     }
   };
 
-  onCompleted = () => {
-    this.setState({ isLoading: false });
-  };
-
   render() {
     const text =
-      this.props.data.watched === true
+      this.props.data?.watched === true
         ? 'Mark as not watched'
         : 'Mark as watched';
-    const type = this.props.data.watched === true ? 'danger' : 'primary';
-    return this.state.isLoading ? (
-      <ActivityIndicator />
-    ) : (
+    const type = this.props.data?.watched === true ? 'danger' : 'primary';
+    return (
       <Button
         style={styles.button}
         type={type}
@@ -72,12 +55,11 @@ const styles = StyleSheet.create({
   },
 });
 
-export default createFragmentContainer(
-  ToggleWatched,
-  graphql`
-    fragment ToggleWatched on Episode {
+export default createFragmentContainer(ToggleWatched, {
+  data: graphql`
+    fragment ToggleWatched_data on Episode {
       id
       watched
     }
   `,
-);
+});

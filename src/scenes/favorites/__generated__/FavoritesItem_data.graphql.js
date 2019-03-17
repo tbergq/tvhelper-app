@@ -9,22 +9,25 @@
 /*::
 import type { ReaderFragment } from 'relay-runtime';
 import type { FragmentReference } from "relay-runtime";
-declare export opaque type EpisodeItem$ref: FragmentReference;
-export type EpisodeItem = {|
+declare export opaque type FavoritesItem_data$ref: FragmentReference;
+export type FavoritesItem_data = {|
   +id: ?string,
-  +seasonAndNumber: ?string,
   +name: ?string,
-  +airdate: ?any,
-  +watched: ?boolean,
-  +$refType: EpisodeItem$ref,
+  +image: ?{|
+    +medium: ?string
+  |},
+  +previousEpisode: ?any,
+  +nextEpisode: ?any,
+  +status: ?string,
+  +$refType: FavoritesItem_data$ref,
 |};
 */
 
 
 const node/*: ReaderFragment*/ = {
   "kind": "Fragment",
-  "name": "EpisodeItem",
-  "type": "Episode",
+  "name": "FavoritesItem_data",
+  "type": "TvShow",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
@@ -38,33 +41,51 @@ const node/*: ReaderFragment*/ = {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "seasonAndNumber",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
       "name": "name",
       "args": null,
       "storageKey": null
     },
     {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "image",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "TvHelperImage",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "medium",
+          "args": null,
+          "storageKey": null
+        }
+      ]
+    },
+    {
       "kind": "ScalarField",
       "alias": null,
-      "name": "airdate",
+      "name": "previousEpisode",
       "args": null,
       "storageKey": null
     },
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "watched",
+      "name": "nextEpisode",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "status",
       "args": null,
       "storageKey": null
     }
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = '846358011808ecd281e17f7f86b9b00f';
+(node/*: any*/).hash = 'ec3e9b9522f72432be94589f7831202f';
 module.exports = node;

@@ -5,17 +5,17 @@ import { graphql, createFragmentContainer } from '@tbergq/tvhelper-relay';
 import { View, Image, StyleSheet } from 'react-native';
 import { Text, Colors } from '@tbergq/tvhelper-components';
 
-import type { CastItem as CastType } from './__generated__/CastItem.graphql';
+import type { CastItem_data as CastType } from './__generated__/CastItem_data.graphql';
 
 type Props = {|
-  +data: CastType,
+  +data: ?CastType,
 |};
 
 const CastItem = (props: Props) => {
   const imageUrl =
-    props.data.person?.image?.medium ?? props.data.character?.image?.medium;
-  const actorName = props.data.person?.name ?? '';
-  const characterName = props.data.character?.name ?? '';
+    props.data?.person?.image?.medium ?? props.data?.character?.image?.medium;
+  const actorName = props.data?.person?.name ?? '';
+  const characterName = props.data?.character?.name ?? '';
   return (
     <View style={styles.container}>
       <View style={styles.imageWrapper}>
@@ -41,22 +41,25 @@ const styles = StyleSheet.create({
   },
 });
 
-export default createFragmentContainer(
-  CastItem,
-  graphql`
-    fragment CastItem on Cast {
+// eslint-disable-next-line no-unused-vars
+const CastItemPersonFragment = graphql`
+  fragment CastItemPerson_person on Person @relay(mask: false) {
+    name
+    image {
+      medium
+    }
+  }
+`;
+
+export default createFragmentContainer(CastItem, {
+  data: graphql`
+    fragment CastItem_data on Cast {
       person {
-        name
-        image {
-          medium
-        }
+        ...CastItemPerson_person @relay(mask: false)
       }
       character {
-        name
-        image {
-          medium
-        }
+        ...CastItemPerson_person @relay(mask: false)
       }
     }
   `,
-);
+});

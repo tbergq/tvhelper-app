@@ -8,12 +8,19 @@ const mutation = graphql`
   mutation MarkAsWatchedMutation($episodeId: ID!) {
     markAsWatched(episodeId: $episodeId) {
       success
+      episode {
+        id
+        watched
+      }
     }
   }
 `;
 
 type Args = {|
-  +onCompleted: (response: MarkAsWatchedMutationResponse, error: Error) => void,
+  +onCompleted?: (
+    response: MarkAsWatchedMutationResponse,
+    error: Error,
+  ) => void,
   +onError?: () => void,
   +episodeId: string,
 |};
@@ -24,14 +31,14 @@ const markAsWatched = ({ onCompleted, onError, episodeId }: Args) => {
     variables: { episodeId },
     onCompleted,
     onError,
-    updater: (store: Object) => {
-      const payload = store.getRootField('markAsWatched');
-      const success = payload.getValue('success');
-
-      if (success) {
-        const episode = store.get(episodeId);
-        episode.setValue(true, 'watched');
-      }
+    optimisticResponse: {
+      markAsWatched: {
+        success: true,
+        episode: {
+          id: episodeId,
+          watched: true,
+        },
+      },
     },
   });
 };

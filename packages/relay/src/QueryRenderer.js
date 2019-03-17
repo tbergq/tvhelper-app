@@ -2,30 +2,34 @@
 
 import * as React from 'react';
 import { ActivityIndicator } from 'react-native';
-import { Text } from '@tbergq/tvhelper-components';
-import { QueryRenderer as OriginalQueryRenderer } from 'react-relay';
+import { Text, Button } from '@tbergq/tvhelper-components';
+import {
+  QueryRenderer as OriginalQueryRenderer,
+  type GraphQLTaggedNode,
+} from '@kiwicom/relay';
 
 import environment from './Environment';
 
 type Props = {|
-  +query: string,
+  +query: GraphQLTaggedNode,
   +render: (props: Object) => React.Element<any>,
   +variables?: Object,
 |};
 
 export default class QueryRenderer extends React.Component<Props> {
-  renderInner = ({ error, props }: Object) => {
-    if (error) {
-      console.warn(error); // eslint-disable-line no-console
-      return <Text>Query failed </Text>;
-    }
-
-    if (props) {
-      return this.props.render(props);
-    }
-
+  onLoading() {
     return <ActivityIndicator />;
-  };
+  }
+
+  onSystemError({ error, retry }: Object) {
+    console.warn(error); // eslint-disable-line no-console
+    return (
+      <>
+        <Text>Query failed </Text>
+        <Button text="Retry" onPress={retry} />
+      </>
+    );
+  }
 
   render() {
     return (
@@ -33,7 +37,9 @@ export default class QueryRenderer extends React.Component<Props> {
         environment={environment}
         query={this.props.query}
         variables={this.props.variables}
-        render={this.renderInner}
+        onResponse={this.props.render}
+        onLoading={this.onLoading}
+        onSystemError={this.onSystemError}
       />
     );
   }

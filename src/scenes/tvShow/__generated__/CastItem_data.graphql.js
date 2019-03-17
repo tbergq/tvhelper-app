@@ -9,8 +9,8 @@
 /*::
 import type { ReaderFragment } from 'relay-runtime';
 import type { FragmentReference } from "relay-runtime";
-declare export opaque type CastItem$ref: FragmentReference;
-export type CastItem = {|
+declare export opaque type CastItem_data$ref: FragmentReference;
+export type CastItem_data = {|
   +person: ?{|
     +name: ?string,
     +image: ?{|
@@ -23,7 +23,7 @@ export type CastItem = {|
       +medium: ?string
     |},
   |},
-  +$refType: CastItem$ref,
+  +$refType: CastItem_data$ref,
 |};
 */
 
@@ -58,7 +58,7 @@ var v0 = [
 ];
 return {
   "kind": "Fragment",
-  "name": "CastItem",
+  "name": "CastItem_data",
   "type": "Cast",
   "metadata": null,
   "argumentDefinitions": [],
@@ -87,5 +87,5 @@ return {
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = '1f377610d84ed7616cebc6a7d29679f8';
+(node/*: any*/).hash = 'a5d91b0c97af33d13e2aec5f41eb659c';
 module.exports = node;

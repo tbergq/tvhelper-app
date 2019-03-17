@@ -6,33 +6,33 @@ import { Text, Colors, Touchable } from '@tbergq/tvhelper-components';
 import { View, StyleSheet } from 'react-native';
 import { withNavigation, type Navigation } from '@tbergq/tvhelper-navigation';
 
-import type { EpisodeItem as EpisodeItemType } from './__generated__/EpisodeItem.graphql';
+import type { EpisodeItem_data as EpisodeItemType } from './__generated__/EpisodeItem_data.graphql';
 
 type Props = {|
-  +data: EpisodeItemType,
+  +data: ?EpisodeItemType,
   +navigation: Navigation<{}>,
 |};
 
 class EpisodeItem extends React.Component<Props> {
   onPress = () => {
     this.props.navigation.navigate('Episode', {
-      id: this.props.data.id,
-      seasonAndNumber: this.props.data.seasonAndNumber,
+      id: this.props.data?.id,
+      seasonAndNumber: this.props.data?.seasonAndNumber,
     });
   };
 
   render() {
-    const airdate = this.props.data.airdate ?? 'Unknown';
+    const airdate = this.props.data?.airdate ?? 'Unknown';
     return (
       <Touchable onPress={this.onPress} delayPressIn={70}>
         <View
           style={[
             styles.row,
-            this.props.data.watched === true && styles.watched,
+            this.props.data?.watched === true && styles.watched,
           ]}
         >
-          <Text>{this.props.data.seasonAndNumber}</Text>
-          <Text>{this.props.data.name}</Text>
+          <Text>{this.props.data?.seasonAndNumber}</Text>
+          <Text>{this.props.data?.name}</Text>
           <Text>{airdate}</Text>
         </View>
       </Touchable>
@@ -54,10 +54,9 @@ const styles = StyleSheet.create({
   },
 });
 
-export default createFragmentContainer(
-  withNavigation(EpisodeItem),
-  graphql`
-    fragment EpisodeItem on Episode {
+export default createFragmentContainer(withNavigation(EpisodeItem), {
+  data: graphql`
+    fragment EpisodeItem_data on Episode {
       id
       seasonAndNumber
       name
@@ -65,4 +64,4 @@ export default createFragmentContainer(
       watched
     }
   `,
-);
+});

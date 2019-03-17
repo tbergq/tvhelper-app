@@ -27,7 +27,7 @@ export default class TvShowScene extends React.Component<Props> {
         query={graphql`
           query TvShowSceneQuery($id: ID!) {
             tvShowDetail(id: $id) {
-              ...TvDetail
+              ...TvDetail_data
             }
           }
         `}

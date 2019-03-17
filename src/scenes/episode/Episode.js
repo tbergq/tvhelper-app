@@ -5,22 +5,22 @@ import { graphql, createFragmentContainer } from '@tbergq/tvhelper-relay';
 import { Text } from '@tbergq/tvhelper-components';
 import { StyleSheet, View } from 'react-native';
 
-import type { Episode as EpisodeType } from './__generated__/Episode.graphql';
+import type { Episode_data as EpisodeType } from './__generated__/Episode_data.graphql';
 import Image from '../../components/TvHelperImage';
 import ToggleWatched from './ToggleWatched';
 
 type Props = {|
-  +data: EpisodeType,
+  +data: ?EpisodeType,
 |};
 
 const Episode = (props: Props) => (
   <View style={styles.container}>
-    <Image data={props.data.image} style={styles.image} />
+    <Image data={props.data?.image} style={styles.image} />
     <Text style={styles.title} bold={true}>
-      {props.data.name}
+      {props.data?.name}
     </Text>
     <View style={styles.content}>
-      <Text>{props.data.summary}</Text>
+      <Text>{props.data?.summary}</Text>
     </View>
     <View style={styles.toggleContainer}>
       <ToggleWatched data={props.data} />
@@ -52,16 +52,15 @@ const styles = StyleSheet.create({
   },
 });
 
-export default createFragmentContainer(
-  Episode,
-  graphql`
-    fragment Episode on Episode {
+export default createFragmentContainer(Episode, {
+  data: graphql`
+    fragment Episode_data on Episode {
       name
       summary
       image {
-        ...TvHelperImage
+        ...TvHelperImage_data
       }
-      ...ToggleWatched
+      ...ToggleWatched_data
     }
   `,
-);
+});

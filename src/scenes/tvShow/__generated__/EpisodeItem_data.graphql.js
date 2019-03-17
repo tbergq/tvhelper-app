@@ -9,24 +9,22 @@
 /*::
 import type { ReaderFragment } from 'relay-runtime';
 import type { FragmentReference } from "relay-runtime";
-declare export opaque type TvShowItem$ref: FragmentReference;
-export type TvShowItem = {|
+declare export opaque type EpisodeItem_data$ref: FragmentReference;
+export type EpisodeItem_data = {|
   +id: ?string,
+  +seasonAndNumber: ?string,
   +name: ?string,
-  +status: ?string,
-  +rating: ?number,
-  +image: ?{|
-    +medium: ?string
-  |},
-  +$refType: TvShowItem$ref,
+  +airdate: ?any,
+  +watched: ?boolean,
+  +$refType: EpisodeItem_data$ref,
 |};
 */
 
 
 const node/*: ReaderFragment*/ = {
   "kind": "Fragment",
-  "name": "TvShowItem",
-  "type": "TvShow",
+  "name": "EpisodeItem_data",
+  "type": "Episode",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
@@ -40,6 +38,13 @@ const node/*: ReaderFragment*/ = {
     {
       "kind": "ScalarField",
       "alias": null,
+      "name": "seasonAndNumber",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
       "name": "name",
       "args": null,
       "storageKey": null
@@ -47,37 +52,19 @@ const node/*: ReaderFragment*/ = {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "status",
+      "name": "airdate",
       "args": null,
       "storageKey": null
     },
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "rating",
+      "name": "watched",
       "args": null,
       "storageKey": null
-    },
-    {
-      "kind": "LinkedField",
-      "alias": null,
-      "name": "image",
-      "storageKey": null,
-      "args": null,
-      "concreteType": "TvHelperImage",
-      "plural": false,
-      "selections": [
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "medium",
-          "args": null,
-          "storageKey": null
-        }
-      ]
     }
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = 'd2272d1987d3bb15d2aeb0a02420b176';
+(node/*: any*/).hash = '283672a88beeadc4113e47651c3720ff';
 module.exports = node;

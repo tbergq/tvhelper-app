@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 94c52ad134c445a8f452a4b678383df5
+ * @relayHash 06fda0368cee4497ebc2efab17d5c947
  */
 
 /* eslint-disable */
@@ -9,13 +9,13 @@
 
 /*::
 import type { ConcreteRequest } from 'relay-runtime';
-type TvDetail$ref = any;
+type TvDetail_data$ref = any;
 export type TvShowSceneQueryVariables = {|
   id: string
 |};
 export type TvShowSceneQueryResponse = {|
   +tvShowDetail: ?{|
-    +$fragmentRefs: TvDetail$ref
+    +$fragmentRefs: TvDetail_data$ref
   |}
 |};
 export type TvShowSceneQuery = {|
@@ -30,41 +30,41 @@ query TvShowSceneQuery(
   $id: ID!
 ) {
   tvShowDetail(id: $id) {
-    ...TvDetail
+    ...TvDetail_data
     id
   }
 }
 
-fragment TvDetail on TvShow {
+fragment TvDetail_data on TvShow {
   isFavorite
   image {
     original
     id
   }
-  ...Summary
-  ...EpisodeList
-  ...Cast
+  ...Summary_data
+  ...EpisodeList_data
+  ...Cast_data
 }
 
-fragment Summary on TvShow {
+fragment Summary_data on TvShow {
   summary
 }
 
-fragment EpisodeList on TvShow {
+fragment EpisodeList_data on TvShow {
   episodes {
     id
-    ...EpisodeItem
+    ...EpisodeItem_data
   }
 }
 
-fragment Cast on TvShow {
+fragment Cast_data on TvShow {
   cast {
     id
-    ...CastItem
+    ...CastItem_data
   }
 }
 
-fragment CastItem on Cast {
+fragment CastItem_data on Cast {
   person {
     name
     image {
@@ -83,7 +83,7 @@ fragment CastItem on Cast {
   }
 }
 
-fragment EpisodeItem on Episode {
+fragment EpisodeItem_data on Episode {
   id
   seasonAndNumber
   name
@@ -166,7 +166,7 @@ return {
         "selections": [
           {
             "kind": "FragmentSpread",
-            "name": "TvDetail",
+            "name": "TvDetail_data",
             "args": null
           }
         ]
@@ -294,12 +294,12 @@ return {
   "params": {
     "operationKind": "query",
     "name": "TvShowSceneQuery",
-    "id": "2ddca74e3d17d01ac8e69c8a2f59329e",
+    "id": "11cb778ad6c5bca4b0ef18ab0a37ca94",
     "text": null,
     "metadata": {}
   }
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = '2ddca74e3d17d01ac8e69c8a2f59329e';
+(node/*: any*/).hash = '11cb778ad6c5bca4b0ef18ab0a37ca94';
 module.exports = node;

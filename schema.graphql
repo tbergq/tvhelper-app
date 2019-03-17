@@ -37,7 +37,7 @@ type Episode {
 
 type EpisodeWatched {
   success: Boolean
-  id: ID
+  episode: Episode
 }
 
 type LoginType {

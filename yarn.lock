@@ -1045,7 +1045,7 @@
     strip-ansi "^5.0.0"
     text-table "^0.2.0"
 
-"@kiwicom/fetch@^2.2.3":
+"@kiwicom/fetch@^2.2.2", "@kiwicom/fetch@^2.2.3":
   version "2.2.3"
   resolved "https://registry.yarnpkg.com/@kiwicom/fetch/-/fetch-2.2.3.tgz#ad755026a304b9f3de7e2e26dd8f64b4e5d41066"
   integrity sha512-UQtas8yPjum+ydD/jjHkSlpq0luuDUf13uBfOXCzPG/YFemOCvxaph3tq30YPLmheP9RGSXECMd6LeFjSz+2BA==
@@ -1057,6 +1057,17 @@
   version "0.5.0"
   resolved "https://registry.yarnpkg.com/@kiwicom/js/-/js-0.5.0.tgz#8424ba078a81af041fa9932c3faa1bc16eee8fff"
   integrity sha512-/bRJ9NdMMWYybk0sK/pJ+JxWDe4acIypRzYB0MMoM8ZLlVIb4afNMj9p1AJo1jQmUOfMYjn/7aj0A3iG+efZug==
+
+"@kiwicom/relay@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@kiwicom/relay/-/relay-1.0.1.tgz#f7e0f5aa451ca38b0badc27b2b074cb8bb879b2b"
+  integrity sha512-KYe1FPEHYA09HRHDePGxG+SMbiI9JtdxJrysYDiRD2n7LgZK+WpNt/+kiwQzHIDHrkoyscEzZSXH8MRPy3qIeg==
+  dependencies:
+    "@kiwicom/fetch" "^2.2.2"
+    "@kiwicom/js" "^0.5.0"
+    react-relay "^3.0.0"
+    relay-compiler "^3.0.0"
+    relay-runtime "^3.0.0"
 
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
@@ -3817,9 +3828,9 @@ fast-diff@^1.1.2:
   integrity sha512-xJuoT5+L99XlZ8twedaRf6Ax2TgQVxvgZOYoPKqZufmJib0tL2tegPBOZb1pVNgIhlqDlA0eO0c3wBvQcmzx4w==
 
 fast-glob@^2.2.2:
-  version "2.2.4"
-  resolved "https://registry.yarnpkg.com/fast-glob/-/fast-glob-2.2.4.tgz#e54f4b66d378040e0e4d6a68ec36bbc5b04363c0"
-  integrity sha512-FjK2nCGI/McyzgNtTESqaWP3trPvHyRyoyY70hxjc3oKPNmDe8taohLZpoVKoUjW85tbU5txaYUZCNtVzygl1g==
+  version "2.2.6"
+  resolved "https://registry.yarnpkg.com/fast-glob/-/fast-glob-2.2.6.tgz#a5d5b697ec8deda468d85a74035290a025a95295"
+  integrity sha512-0BvMaZc1k9F+MeWWMe8pL6YltFzZYcJsYU7D4JyDA6PAczaXvxqQQ/z+mDF7/4Mw01DeUc+i3CTKajnkANkV4w==
   dependencies:
     "@mrmlnc/readdir-enhanced" "^2.2.1"
     "@nodelib/fs.stat" "^1.1.2"
@@ -7056,11 +7067,6 @@ react-proxy@^1.1.7:
     lodash "^4.6.1"
     react-deep-force-update "^1.0.0"
 
-react-relay-network-modern@^2.5.0:
-  version "2.5.1"
-  resolved "https://registry.yarnpkg.com/react-relay-network-modern/-/react-relay-network-modern-2.5.1.tgz#a081ae2691dbf2cfa53129cd6eb41a1e91a071aa"
-  integrity sha512-Edp9XWAWLiAntrtNmfeLZMPMcwUmTpBhAoxHCaSKcet7gWN5RS0Z2OhKpVhKg3p1qZz+VLMMvWg8eQghBe0auQ==
-
 react-relay@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/react-relay/-/react-relay-3.0.0.tgz#b3fe7931f812a6700e2420a853adb74156e162b9"
@@ -7274,7 +7280,7 @@ relay-compiler@^3.0.0:
     signedsource "^1.0.0"
     yargs "^9.0.0"
 
-relay-runtime@3.0.0:
+relay-runtime@3.0.0, relay-runtime@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/relay-runtime/-/relay-runtime-3.0.0.tgz#a024e1d80c9a71e76495f3a15e8f3f40113385e2"
   integrity sha512-P9pDoAaqku9m5MTMjampwo+0vsNd2Nv8x78GpWuxPxvqJusqz8MBpu0RVBViIpLzCn77Pegw2ihtXgQSBdvs0w==

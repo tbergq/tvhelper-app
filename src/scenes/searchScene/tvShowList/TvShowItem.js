@@ -6,7 +6,7 @@ import { graphql, createFragmentContainer } from '@tbergq/tvhelper-relay';
 import { Image, View, StyleSheet, Dimensions } from 'react-native';
 import { withNavigation, type NavigationScreenProp } from 'react-navigation';
 
-import type { TvShowItem as TvShow } from './__generated__/TvShowItem.graphql';
+import type { TvShowItem_data as TvShow } from './__generated__/TvShowItem_data.graphql';
 
 type Props = {|
   +data: ?TvShow,
@@ -75,10 +75,9 @@ const styles = StyleSheet.create({
   },
 });
 
-export default createFragmentContainer(
-  withNavigation(TvShowItem),
-  graphql`
-    fragment TvShowItem on TvShow {
+export default createFragmentContainer(withNavigation(TvShowItem), {
+  data: graphql`
+    fragment TvShowItem_data on TvShow {
       id
       name
       status
@@ -88,4 +87,4 @@ export default createFragmentContainer(
       }
     }
   `,
-);
+});

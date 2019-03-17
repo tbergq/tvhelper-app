@@ -8,36 +8,34 @@
 
 /*::
 import type { ReaderFragment } from 'relay-runtime';
-type FavoritesItem$ref = any;
+type EpisodeItem_data$ref = any;
 import type { FragmentReference } from "relay-runtime";
-declare export opaque type FavoritesList$ref: FragmentReference;
-export type FavoritesList = $ReadOnlyArray<{|
-  +node: ?{|
+declare export opaque type EpisodeList_data$ref: FragmentReference;
+export type EpisodeList_data = {|
+  +episodes: ?$ReadOnlyArray<?{|
     +id: ?string,
-    +$fragmentRefs: FavoritesItem$ref,
-  |},
-  +$refType: FavoritesList$ref,
-|}>;
+    +$fragmentRefs: EpisodeItem_data$ref,
+  |}>,
+  +$refType: EpisodeList_data$ref,
+|};
 */
 
 
 const node/*: ReaderFragment*/ = {
   "kind": "Fragment",
-  "name": "FavoritesList",
-  "type": "TvShowEdge",
-  "metadata": {
-    "plural": true
-  },
+  "name": "EpisodeList_data",
+  "type": "TvShow",
+  "metadata": null,
   "argumentDefinitions": [],
   "selections": [
     {
       "kind": "LinkedField",
       "alias": null,
-      "name": "node",
+      "name": "episodes",
       "storageKey": null,
       "args": null,
-      "concreteType": "TvShow",
-      "plural": false,
+      "concreteType": "Episode",
+      "plural": true,
       "selections": [
         {
           "kind": "ScalarField",
@@ -48,7 +46,7 @@ const node/*: ReaderFragment*/ = {
         },
         {
           "kind": "FragmentSpread",
-          "name": "FavoritesItem",
+          "name": "EpisodeItem_data",
           "args": null
         }
       ]
@@ -56,5 +54,5 @@ const node/*: ReaderFragment*/ = {
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = '385b1676cc2847744c216cfe658e3822';
+(node/*: any*/).hash = '2b561513c1d4b65f7a80b12a81f6a77a';
 module.exports = node;

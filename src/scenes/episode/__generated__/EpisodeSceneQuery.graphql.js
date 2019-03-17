@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash cdc3f8957d3039de3f4590c58ce38ad3
+ * @relayHash ab9e9a17f31cc7bd4ea62c22669068cd
  */
 
 /* eslint-disable */
@@ -9,13 +9,13 @@
 
 /*::
 import type { ConcreteRequest } from 'relay-runtime';
-type Episode$ref = any;
+type Episode_data$ref = any;
 export type EpisodeSceneQueryVariables = {|
   id: string
 |};
 export type EpisodeSceneQueryResponse = {|
   +episode: ?{|
-    +$fragmentRefs: Episode$ref
+    +$fragmentRefs: Episode_data$ref
   |}
 |};
 export type EpisodeSceneQuery = {|
@@ -30,27 +30,27 @@ query EpisodeSceneQuery(
   $id: ID!
 ) {
   episode(id: $id) {
-    ...Episode
+    ...Episode_data
     id
   }
 }
 
-fragment Episode on Episode {
+fragment Episode_data on Episode {
   name
   summary
   image {
-    ...TvHelperImage
+    ...TvHelperImage_data
     id
   }
-  ...ToggleWatched
+  ...ToggleWatched_data
 }
 
-fragment TvHelperImage on TvHelperImage {
+fragment TvHelperImage_data on TvHelperImage {
   medium
   original
 }
 
-fragment ToggleWatched on Episode {
+fragment ToggleWatched_data on Episode {
   id
   watched
 }
@@ -100,7 +100,7 @@ return {
         "selections": [
           {
             "kind": "FragmentSpread",
-            "name": "Episode",
+            "name": "Episode_data",
             "args": null
           }
         ]
@@ -176,12 +176,12 @@ return {
   "params": {
     "operationKind": "query",
     "name": "EpisodeSceneQuery",
-    "id": "1c75ece6dd9573393d55847834bc2d48",
+    "id": "3730e7f8507e60fc1c4f1cdba32b0c99",
     "text": null,
     "metadata": {}
   }
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = '1c75ece6dd9573393d55847834bc2d48';
+(node/*: any*/).hash = '3730e7f8507e60fc1c4f1cdba32b0c99';
 module.exports = node;

@@ -9,18 +9,18 @@
 /*::
 import type { ReaderFragment } from 'relay-runtime';
 import type { FragmentReference } from "relay-runtime";
-declare export opaque type TvHelperImage$ref: FragmentReference;
-export type TvHelperImage = {|
+declare export opaque type TvHelperImage_data$ref: FragmentReference;
+export type TvHelperImage_data = {|
   +medium: ?string,
   +original: ?string,
-  +$refType: TvHelperImage$ref,
+  +$refType: TvHelperImage_data$ref,
 |};
 */
 
 
 const node/*: ReaderFragment*/ = {
   "kind": "Fragment",
-  "name": "TvHelperImage",
+  "name": "TvHelperImage_data",
   "type": "TvHelperImage",
   "metadata": null,
   "argumentDefinitions": [],
@@ -42,5 +42,5 @@ const node/*: ReaderFragment*/ = {
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = '4de78bc424aae429f7fb742a5a901cb4';
+(node/*: any*/).hash = 'ba04a674e06eec94d15111369ea96e50';
 module.exports = node;

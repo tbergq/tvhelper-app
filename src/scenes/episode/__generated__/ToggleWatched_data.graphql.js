@@ -9,18 +9,18 @@
 /*::
 import type { ReaderFragment } from 'relay-runtime';
 import type { FragmentReference } from "relay-runtime";
-declare export opaque type ToggleWatched$ref: FragmentReference;
-export type ToggleWatched = {|
+declare export opaque type ToggleWatched_data$ref: FragmentReference;
+export type ToggleWatched_data = {|
   +id: ?string,
   +watched: ?boolean,
-  +$refType: ToggleWatched$ref,
+  +$refType: ToggleWatched_data$ref,
 |};
 */
 
 
 const node/*: ReaderFragment*/ = {
   "kind": "Fragment",
-  "name": "ToggleWatched",
+  "name": "ToggleWatched_data",
   "type": "Episode",
   "metadata": null,
   "argumentDefinitions": [],
@@ -42,5 +42,5 @@ const node/*: ReaderFragment*/ = {
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = 'd6e0360dcbb19449cc2d0ea0f540da41';
+(node/*: any*/).hash = 'c8852a10e20b5d9996568a33fe57bda8';
 module.exports = node;

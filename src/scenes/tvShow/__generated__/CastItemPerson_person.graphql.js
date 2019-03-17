@@ -8,51 +8,53 @@
 
 /*::
 import type { ReaderFragment } from 'relay-runtime';
-type EpisodeItem$ref = any;
 import type { FragmentReference } from "relay-runtime";
-declare export opaque type EpisodeList$ref: FragmentReference;
-export type EpisodeList = {|
-  +episodes: ?$ReadOnlyArray<?{|
-    +id: ?string,
-    +$fragmentRefs: EpisodeItem$ref,
-  |}>,
-  +$refType: EpisodeList$ref,
-|};
+declare export opaque type CastItemPerson_person$ref: FragmentReference;
+export type CastItemPerson_person = {
+  +name: ?string,
+  +image: ?{
+    +medium: ?string
+  },
+};
 */
 
 
 const node/*: ReaderFragment*/ = {
   "kind": "Fragment",
-  "name": "EpisodeList",
-  "type": "TvShow",
-  "metadata": null,
+  "name": "CastItemPerson_person",
+  "type": "Person",
+  "metadata": {
+    "mask": false
+  },
   "argumentDefinitions": [],
   "selections": [
     {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "name",
+      "args": null,
+      "storageKey": null
+    },
+    {
       "kind": "LinkedField",
       "alias": null,
-      "name": "episodes",
+      "name": "image",
       "storageKey": null,
       "args": null,
-      "concreteType": "Episode",
-      "plural": true,
+      "concreteType": "TvHelperImage",
+      "plural": false,
       "selections": [
         {
           "kind": "ScalarField",
           "alias": null,
-          "name": "id",
+          "name": "medium",
           "args": null,
           "storageKey": null
-        },
-        {
-          "kind": "FragmentSpread",
-          "name": "EpisodeItem",
-          "args": null
         }
       ]
     }
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = '0b522ee62d4f47fbea5795d69b5b7b50';
+(node/*: any*/).hash = '9b560acbe5cef0ba5494fd44077d90c7';
 module.exports = node;

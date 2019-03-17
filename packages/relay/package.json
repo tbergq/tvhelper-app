@@ -5,12 +5,10 @@
   "main": "index.js",
   "dependencies": {
     "@kiwicom/fetch": "^2.2.3",
-    "@tbergq/tvhelper-components": "^0",
-    "react-relay": "^3.0.0",
-    "react-relay-network-modern": "^2.5.0"
+    "@kiwicom/relay": "^1.0.1",
+    "@tbergq/tvhelper-components": "^0"
   },
   "devDependencies": {
-    "graphql": "^14.0.2",
-    "relay-compiler": "^3.0.0"
+    "graphql": "^14.0.2"
   }
 }

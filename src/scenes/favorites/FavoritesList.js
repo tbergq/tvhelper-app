@@ -1,7 +1,5 @@
 // @flow strict
 
-/* eslint-disable relay/unused-fields */
-
 import * as React from 'react';
 import { FlatList, StyleSheet, View, RefreshControl } from 'react-native';
 import {
@@ -10,7 +8,7 @@ import {
   type RelayRefetchProp,
 } from '@tbergq/tvhelper-relay';
 
-import type { FavoritesList as FavoritesListType } from './__generated__/FavoritesList.graphql';
+import type { FavoritesList_data as FavoritesListType } from './__generated__/FavoritesList_data.graphql';
 import FavoritesItem from './FavoritesItem';
 
 type Props = {|
@@ -58,7 +56,7 @@ class FavoritesList extends React.Component<Props, State> {
   };
 
   render() {
-    const data = this.props.data ?? [];
+    const data = this.props.data.favorites?.edges ?? [];
     return (
       <View style={styles.container}>
         <FlatList
@@ -90,22 +88,31 @@ const styles = StyleSheet.create({
 
 export default createRefetchContainer(
   FavoritesList,
-  graphql`
-    fragment FavoritesList on TvShowEdge @relay(plural: true) {
-      node {
-        id
-        ...FavoritesItem
-      }
-    }
-  `,
-  graphql`
-    query FavoritesListRefetchQuery($first: Int, $options: SortOptions) {
-      favorites(first: $first, options: $options)
-        @connection(key: "FavoritesScene_favorites", filters: []) {
-        edges {
-          ...FavoritesList
+  {
+    data: graphql`
+      fragment FavoritesList_data on RootQuery
+        @argumentDefinitions(
+          first: { type: "Int" }
+          options: {
+            type: "SortOptions"
+            defaultValue: { sortDirection: "ASC", sortBy: "NAME" }
+          }
+        ) {
+        favorites(first: $first, options: $options)
+          @connection(key: "FavoritesList_favorites", filters: []) {
+          edges {
+            node {
+              id
+              ...FavoritesItem_data
+            }
+          }
         }
       }
+    `,
+  },
+  graphql`
+    query FavoritesListRefetchQuery($first: Int, $options: SortOptions) {
+      ...FavoritesList_data @arguments(first: $first, options: $options)
     }
   `,
 );

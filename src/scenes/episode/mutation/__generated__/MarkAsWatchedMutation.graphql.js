@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 54b7178e15e54885f6b0c63af55e5369
+ * @relayHash 278ee7519bc413fd7f06fc2579642128
  */
 
 /* eslint-disable */
@@ -14,7 +14,11 @@ export type MarkAsWatchedMutationVariables = {|
 |};
 export type MarkAsWatchedMutationResponse = {|
   +markAsWatched: ?{|
-    +success: ?boolean
+    +success: ?boolean,
+    +episode: ?{|
+      +id: ?string,
+      +watched: ?boolean,
+    |},
   |}
 |};
 export type MarkAsWatchedMutation = {|
@@ -30,7 +34,10 @@ mutation MarkAsWatchedMutation(
 ) {
   markAsWatched(episodeId: $episodeId) {
     success
-    id
+    episode {
+      id
+      watched
+    }
   }
 }
 */
@@ -46,19 +53,56 @@ var v0 = [
 ],
 v1 = [
   {
-    "kind": "Variable",
-    "name": "episodeId",
-    "variableName": "episodeId",
-    "type": "ID!"
+    "kind": "LinkedField",
+    "alias": null,
+    "name": "markAsWatched",
+    "storageKey": null,
+    "args": [
+      {
+        "kind": "Variable",
+        "name": "episodeId",
+        "variableName": "episodeId",
+        "type": "ID!"
+      }
+    ],
+    "concreteType": "EpisodeWatched",
+    "plural": false,
+    "selections": [
+      {
+        "kind": "ScalarField",
+        "alias": null,
+        "name": "success",
+        "args": null,
+        "storageKey": null
+      },
+      {
+        "kind": "LinkedField",
+        "alias": null,
+        "name": "episode",
+        "storageKey": null,
+        "args": null,
+        "concreteType": "Episode",
+        "plural": false,
+        "selections": [
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "id",
+            "args": null,
+            "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "watched",
+            "args": null,
+            "storageKey": null
+          }
+        ]
+      }
+    ]
   }
-],
-v2 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "success",
-  "args": null,
-  "storageKey": null
-};
+];
 return {
   "kind": "Request",
   "fragment": {
@@ -67,56 +111,23 @@ return {
     "type": "RootMutation",
     "metadata": null,
     "argumentDefinitions": (v0/*: any*/),
-    "selections": [
-      {
-        "kind": "LinkedField",
-        "alias": null,
-        "name": "markAsWatched",
-        "storageKey": null,
-        "args": (v1/*: any*/),
-        "concreteType": "EpisodeWatched",
-        "plural": false,
-        "selections": [
-          (v2/*: any*/)
-        ]
-      }
-    ]
+    "selections": (v1/*: any*/)
   },
   "operation": {
     "kind": "Operation",
     "name": "MarkAsWatchedMutation",
     "argumentDefinitions": (v0/*: any*/),
-    "selections": [
-      {
-        "kind": "LinkedField",
-        "alias": null,
-        "name": "markAsWatched",
-        "storageKey": null,
-        "args": (v1/*: any*/),
-        "concreteType": "EpisodeWatched",
-        "plural": false,
-        "selections": [
-          (v2/*: any*/),
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "id",
-            "args": null,
-            "storageKey": null
-          }
-        ]
-      }
-    ]
+    "selections": (v1/*: any*/)
   },
   "params": {
     "operationKind": "mutation",
     "name": "MarkAsWatchedMutation",
-    "id": "c08b1715513eb5a9fa61dd9cc8ab5cb6",
+    "id": "dad9374747b0d6ac8e3e7d23b5cf41fe",
     "text": null,
     "metadata": {}
   }
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = 'c08b1715513eb5a9fa61dd9cc8ab5cb6';
+(node/*: any*/).hash = 'dad9374747b0d6ac8e3e7d23b5cf41fe';
 module.exports = node;

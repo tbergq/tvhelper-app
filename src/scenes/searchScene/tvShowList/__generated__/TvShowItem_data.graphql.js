@@ -8,29 +8,35 @@
 
 /*::
 import type { ReaderFragment } from 'relay-runtime';
-type ToggleWatched$ref = any;
-type TvHelperImage$ref = any;
 import type { FragmentReference } from "relay-runtime";
-declare export opaque type Episode$ref: FragmentReference;
-export type Episode = {|
+declare export opaque type TvShowItem_data$ref: FragmentReference;
+export type TvShowItem_data = {|
+  +id: ?string,
   +name: ?string,
-  +summary: ?string,
+  +status: ?string,
+  +rating: ?number,
   +image: ?{|
-    +$fragmentRefs: TvHelperImage$ref
+    +medium: ?string
   |},
-  +$fragmentRefs: ToggleWatched$ref,
-  +$refType: Episode$ref,
+  +$refType: TvShowItem_data$ref,
 |};
 */
 
 
 const node/*: ReaderFragment*/ = {
   "kind": "Fragment",
-  "name": "Episode",
-  "type": "Episode",
+  "name": "TvShowItem_data",
+  "type": "TvShow",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "id",
+      "args": null,
+      "storageKey": null
+    },
     {
       "kind": "ScalarField",
       "alias": null,
@@ -41,7 +47,14 @@ const node/*: ReaderFragment*/ = {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "summary",
+      "name": "status",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "rating",
       "args": null,
       "storageKey": null
     },
@@ -55,19 +68,16 @@ const node/*: ReaderFragment*/ = {
       "plural": false,
       "selections": [
         {
-          "kind": "FragmentSpread",
-          "name": "TvHelperImage",
-          "args": null
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "medium",
+          "args": null,
+          "storageKey": null
         }
       ]
-    },
-    {
-      "kind": "FragmentSpread",
-      "name": "ToggleWatched",
-      "args": null
     }
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = '8845b0d673126163d35f8ed81547b92e';
+(node/*: any*/).hash = 'da3ad055d31761d07ae48d93c4966f47';
 module.exports = node;

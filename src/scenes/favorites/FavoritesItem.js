@@ -7,41 +7,41 @@ import { createFragmentContainer, graphql } from '@tbergq/tvhelper-relay';
 import { withNavigation, type Navigation } from '@tbergq/tvhelper-navigation';
 
 import EpisodeDateRow from './EpisodeDateRow';
-import type { FavoritesItem as FavoritesType } from './__generated__/FavoritesItem.graphql';
+import type { FavoritesItem_data as FavoritesType } from './__generated__/FavoritesItem_data.graphql';
 
 type Props = {|
-  +data: FavoritesType,
+  +data: ?FavoritesType,
   +navigation: Navigation<{}>,
 |};
 
 class FavoritesItem extends React.Component<Props> {
   onPress = () => {
     this.props.navigation.navigate('TvShow', {
-      id: this.props.data.id,
-      name: this.props.data.name,
+      id: this.props.data?.id,
+      name: this.props.data?.name,
     });
   };
 
   render() {
     const { data } = this.props;
-    const name = data.name ?? '';
-    const status = data.status ?? '';
+    const name = data?.name ?? '';
+    const status = data?.status ?? '';
 
     return (
       <Touchable onPress={this.onPress} delayPressIn={70}>
         <View style={styles.container}>
           <View style={styles.imageWrapper}>
             <Image
-              source={{ uri: this.props.data.image?.medium }}
+              source={{ uri: this.props.data?.image?.medium }}
               style={styles.image}
             />
           </View>
           <View style={styles.content}>
             <Text>{`${name} - ${status}`}</Text>
-            <EpisodeDateRow text="Next episode" date={data.nextEpisode} />
+            <EpisodeDateRow text="Next episode" date={data?.nextEpisode} />
             <EpisodeDateRow
               text="Previous episode"
-              date={data.previousEpisode}
+              date={data?.previousEpisode}
             />
           </View>
         </View>
@@ -75,10 +75,9 @@ const styles = StyleSheet.create({
   },
 });
 
-export default createFragmentContainer(
-  withNavigation(FavoritesItem),
-  graphql`
-    fragment FavoritesItem on TvShow {
+export default createFragmentContainer(withNavigation(FavoritesItem), {
+  data: graphql`
+    fragment FavoritesItem_data on TvShow {
       id
       name
       image {
@@ -89,4 +88,4 @@ export default createFragmentContainer(
       status
     }
   `,
-);
+});

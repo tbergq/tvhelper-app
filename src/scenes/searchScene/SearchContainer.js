@@ -22,7 +22,7 @@ export default class SearchContainer extends React.Component<Props> {
         query={graphql`
           query SearchContainerQuery($query: String!) {
             searchTvShow(query: $query) {
-              ...TvShowList
+              ...TvShowList_data
             }
           }
         `}

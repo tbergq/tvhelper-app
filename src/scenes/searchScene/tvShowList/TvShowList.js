@@ -4,7 +4,7 @@ import * as React from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
 import { graphql, createFragmentContainer } from '@tbergq/tvhelper-relay';
 
-import type { TvShowList as SearchResults } from './__generated__/TvShowList.graphql';
+import type { TvShowList_data as SearchResults } from './__generated__/TvShowList_data.graphql';
 import TvShowItem from './TvShowItem';
 
 type Props = {|
@@ -35,16 +35,15 @@ const styles = StyleSheet.create({
   },
 });
 
-export default createFragmentContainer(
-  TvShowList,
-  graphql`
-    fragment TvShowList on TvShowConnection {
+export default createFragmentContainer(TvShowList, {
+  data: graphql`
+    fragment TvShowList_data on TvShowConnection {
       edges {
         node {
           id
-          ...TvShowItem
+          ...TvShowItem_data
         }
       }
     }
   `,
-);
+});

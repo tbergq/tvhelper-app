@@ -11,13 +11,17 @@ const mutation = graphql`
   mutation DeleteAsWatchedMutation($episodeId: ID!) {
     deleteWatchedEpisode(episodeId: $episodeId) {
       success
+      episode {
+        id
+        watched
+      }
     }
   }
 `;
 
 type Args = {|
   ...DeleteAsWatchedMutationVariables,
-  +onCompleted: (
+  +onCompleted?: (
     response: DeleteAsWatchedMutationResponse,
     error: Error,
   ) => void,
@@ -30,14 +34,14 @@ const deleteAsWatched = ({ onCompleted, onError, episodeId }: Args) => {
     variables: { episodeId },
     onCompleted,
     onError,
-    updater: (store: Object) => {
-      const payload = store.getRootField('deleteWatchedEpisode');
-      const success = payload.getValue('success');
-
-      if (success) {
-        const episode = store.get(episodeId);
-        episode.setValue(false, 'watched');
-      }
+    optimisticResponse: {
+      deleteWatchedEpisode: {
+        success: true,
+        episode: {
+          id: episodeId,
+          watched: false,
+        },
+      },
     },
   });
 };

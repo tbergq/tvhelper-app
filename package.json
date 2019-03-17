@@ -5,11 +5,11 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "eject": "expo eject",
-    "lint": "yarn eslint .",
+    "lint": "yarn eslint --report-unused-disable-directives .",
     "flow": "flow --include-warnings",
     "test-ci": "yarn lint && yarn flow && yarn test",
     "test": "node node_modules/jest/bin/jest.js --config=.jest.json",
-    "relay": "yarn relay-compiler --src ./src --schema ./schema.graphql --persist-output ./persisted-queries.json",
+    "relay": "yarn relay-compiler --src ./src --schema ./schema.graphql --verbose",
     "graphql": "yarn babel-node scripts/getSchema.js",
     "deploy": "expo publish"
   },
